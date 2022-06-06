@@ -1,0 +1,10 @@
+.right-aside-section{
+    position: relative;
+}
+
+.fixed-right-aside-section{
+    position: fixed;
+    height : 95vh;
+    width : 28rem;
+    padding : 0.8rem;
+}
