@@ -1,51 +1,120 @@
-.App {
-  text-align: center;
+.flex-row{
+  display : flex;
+    flex-direction: row;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #22201c;
-  min-height: 100vh;
+.flex-col{
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.flex-grow-1{
+  flex-grow: 1;
 }
 
-.brand-title {
-  font-size: 3rem;
-  color: #d9d9d9;
+.justify-center-flex{
+  justify-content : center;
 }
 
-.brand-title span {
-  color: #ffde59;
+.justify-end-flex{
+  justify-content : flex-end;
 }
 
-.brand-description {
-  font-size: 1.4rem;
+.justify-space-between-flex{
+  justify-content : space-between;
 }
 
-.links {
-  display: flex;
+.justify-space-evenly-flex{
+  justify-content : space-evenly;
 }
 
-.links a {
-  color: #d9d9d9;
-  font-size: 1.2rem;
-  margin: 1rem;
+.align-center-flex{ 
+  align-items : center;
+}
+
+.curs-point{
+  cursor : pointer;
+}
+
+.img-resp {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.mb-1{
+  margin-bottom: 1rem;;
+}
+
+.mt-1{
+  margin-top: 1rem;
+}
+
+.gap-1{
+  gap : 1rem;
+}
+
+.gap-2{
+  gap : 2rem;
+}
+
+
+.loading-gif{
+  border : 3px solid red;
+  width : 20rem;
+  height : 20rem;
+}
+
+.bord-3-red{
+  border : 3px solid red;
+}
+
+.bord-3-green{
+  border : 3px solid green;
+}
+
+.bord-3-yellow{
+  border : 3px solid yellow;
+}
+
+.bord-3-purple{
+  border : 3px solid purple;
+}
+
+.bord-3-blue{
+  border : 3px solid blue;
+}
+
+.bord-3-black{
+  border : 3px solid black;
+}
+
+.price-off{
+  color : green;
+}
+
+.App{
+  font-family: var(--component-heading-font);
+  min-height: 100vh;
+}
+
+.home-grid-container{
+  display : grid;
+  grid-template-columns: 20rem 1fr 28rem;
+  grid-template-rows: 1fr;
+}
+
+.user-avatar{
+  width : 40px;
+  height : 40px;
+  border-radius: 50%;
+}
+
+.avatar-img{
+  border-radius: 50%;
+}
+
+.page-title{
+  padding : 1rem;
 }
