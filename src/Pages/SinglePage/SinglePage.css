@@ -1,0 +1,23 @@
+.single-post-navigation{
+    padding : 1rem;
+}
+
+.new-post-container-grid{
+    display : grid;
+    padding : 0.8rem;
+    grid-template-columns: 5rem 1fr;
+    gap : 0.5rem;
+}
+
+.likes-on-post:hover{
+    text-decoration: underline;
+}
+
+.reply-input-box{
+    padding : 0.5rem;
+    
+}
+
+.reply-container{
+    height : 100%;
+}

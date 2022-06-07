@@ -1,0 +1,8 @@
+.sortbar-container{
+    padding : 0.8rem;
+}
+
+.sort-category{
+    padding : 0.5rem;
+    flex-grow: 1;
+}

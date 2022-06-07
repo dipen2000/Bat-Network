@@ -4,4 +4,8 @@ const getPostsService = async () => {
   return await axios.get("/api/posts");
 };
 
-export { getPostsService };
+const getSinglePostService = async (postId) => {
+  return await axios.get(`/api/posts/${postId}`);
+};
+
+export { getPostsService, getSinglePostService };
