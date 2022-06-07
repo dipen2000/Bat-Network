@@ -1,0 +1,26 @@
+.follow-modal-container{
+    width : 30rem;
+    padding : 0.8rem;
+    background-color: white;
+}
+
+.empty-modal{
+    padding : 0.8rem;
+}
+
+.edit-user-modal-container{
+    width : 40rem;
+    background-color: white;
+}
+
+.edit-user-modal-img-container{
+    width : 7rem;
+    height : 7rem;
+    border-radius: 50%;
+}
+
+.edit-profile-modal-input-container{
+    padding : 0.5rem;
+    border : 3px solid black;
+    line-height: 1.3;
+}

@@ -9,6 +9,7 @@ import { getAllUsers } from "../../features/user";
 import { getSinglePost, CommentCard } from "../../features/post";
 import { useEffect, useState } from "react";
 import { ButtonPrimary } from "../../Components/Buttons";
+import { UserListModal } from "../../features/user";
 
 const SinglePage = () => {
   const dispatch = useDispatch();
@@ -39,6 +40,12 @@ const SinglePage = () => {
     dispatch(getAllUsers());
   }, [dispatch, posts, currentPost._id]);
 
+  const [userModal, setUserModal] = useState({
+    show: false,
+    title: "",
+    list: [],
+  });
+
   return (
     <BatNetworkContainer>
       <div className="home-grid-container bord-3-purple">
@@ -57,7 +64,13 @@ const SinglePage = () => {
             ) : singlePost ? (
               <div>
                 <div className="new-post-container-grid bord-3-purple">
-                  <div className="bord-3-green">
+                  <div
+                    className="bord-3-green curs-point"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      navigate(`/profile/${currentUser?.username}`);
+                    }}
+                  >
                     <Avatar
                       avatar={currentUser?.profileAvatar}
                       username={currentUser?.username}
@@ -66,9 +79,15 @@ const SinglePage = () => {
                   </div>
                   <div className="flex-col bord-3-yellow gap-1">
                     <div className="flex-row justify-space-between-flex align-center-flex">
-                      <div className="flex-row align-center-flex user-username-for-post-details">
-                        <strong>{singlePost?.fullName}</strong>
-                        <span>@{singlePost?.username}</span>
+                      <div
+                        className="flex-row align-center-flex user-username-for-post-details curs-point"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          navigate(`/profile/${currentUser?.username}`);
+                        }}
+                      >
+                        <strong>{currentUser?.fullName}</strong>
+                        <span>@{currentUser?.username}</span>
                         <span>·</span>
                         <span>10min ago</span>
                       </div>
@@ -76,7 +95,18 @@ const SinglePage = () => {
                     </div>
                     <div className="bord-3-blue">{singlePost?.content}</div>
                     {singlePost?.likes.likeCount > 0 && (
-                      <div className="likes-on-post curs-point">
+                      <div
+                        className="underline-hover curs-point"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setUserModal((prevState) => ({
+                            ...prevState,
+                            show: true,
+                            title: "Liked by",
+                            list: singlePost?.likes.likedBy,
+                          }));
+                        }}
+                      >
                         {singlePost?.likes.likeCount} Likes
                       </div>
                     )}
@@ -138,6 +168,9 @@ const SinglePage = () => {
             )}
           </div>
         </div>
+        {userModal.show && (
+          <UserListModal userModal={userModal} setUserModal={setUserModal} />
+        )}
         <RightSidebar />
       </div>
     </BatNetworkContainer>

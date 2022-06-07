@@ -1,0 +1,30 @@
+.user-profile-grid{
+    display : grid;
+    grid-template-columns: 12rem 1fr;
+    grid-template-rows : 1fr;
+    padding : 1rem;
+    gap : 2rem;
+}
+
+.test-2{
+    height : 7rem;
+    width : 7rem;
+}
+
+.user-handle-line-height{
+    line-height : 1.2;
+}
+
+.profile-navigation{
+    padding : 0.8rem;
+}
+
+.user-profile-img-container{
+    height : 12rem;
+    width : 12rem;
+    border-radius :50%;
+}
+
+.big-fonts-user-profile-line-height{
+    line-height : 1.3;
+}

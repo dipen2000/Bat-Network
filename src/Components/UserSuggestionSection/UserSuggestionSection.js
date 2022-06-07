@@ -2,10 +2,10 @@ import "./UserSuggestionSection.css";
 import { Avatar } from "../Avatar/Avatar";
 import { ButtonPrimary } from "../Buttons";
 import { getSuggestedUsers } from "../../Utils";
+import { useNavigate } from "react-router-dom";
 
 const UserSuggestionSection = () => {
-  // const arr = [1, 2, 3];
-
+  const navigate = useNavigate();
   const userSuggestionArr = getSuggestedUsers();
   return (
     <div className="bord-3-blue user-suggestion-section">
@@ -15,7 +15,10 @@ const UserSuggestionSection = () => {
           return (
             <div
               key={user?._id}
-              className="flex-row justify-space-between-flex bord-3-purple align-center-flex"
+              className="flex-row justify-space-between-flex bord-3-purple align-center-flex curs-point"
+              onClick={() => {
+                navigate(`/profile/${user?.username}`);
+              }}
             >
               <div className="flex-row gap-1 align-center-flex single-user-handle-suggestion-container">
                 <Avatar

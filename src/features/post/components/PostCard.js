@@ -15,18 +15,30 @@ const PostCard = ({ post }) => {
       className="new-post-container-grid bord-3-purple curs-point"
       onClick={() => navigate(`/post/${id}`)}
     >
-      <div className="bord-3-green">
+      <div
+        className="bord-3-green"
+        onClick={(e) => {
+          e.stopPropagation();
+          navigate(`/profile/${username}`);
+        }}
+      >
         <Avatar
           avatar={userOfPost?.profileAvatar}
-          username={username}
-          fullName={fullName}
+          username={userOfPost?.username}
+          fullName={userOfPost?.fullName}
         />
       </div>
       <div className="flex-col bord-3-yellow gap-1">
         <div className="flex-row justify-space-between-flex align-center-flex">
-          <div className="flex-row align-center-flex user-username-for-post-details">
-            <strong>{fullName}</strong>
-            <span>@{username}</span>
+          <div
+            className="flex-row align-center-flex user-username-for-post-details curs-point bord-3-blue test-5"
+            onClick={(e) => {
+              e.stopPropagation();
+              navigate(`/profile/${userOfPost?.username}`);
+            }}
+          >
+            <strong>{userOfPost?.fullName}</strong>
+            <span>@{userOfPost?.username}</span>
             <span>·</span>
             <span>10min ago</span>
           </div>
