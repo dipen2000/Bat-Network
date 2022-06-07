@@ -63,7 +63,7 @@ export const posts = [
         {
           _id: uuid(),
           fullName: "Alfred",
-          username: "wayne_family_butler",
+          username: "pennyworth",
           profileAvatar:
             "https://www.dccomics.com/sites/default/files/styles/character_thumb_160x160/public/Char_Profile_AlfredPennyworth_5c40ddc7b0e412.20200112.jpg?itok=tVwKTrvd",
         },
@@ -92,7 +92,7 @@ export const posts = [
       likedBy: [],
       dislikedBy: [],
     },
-    username: "wayne_family_butler",
+    username: "pennyworth",
     fullName: "Alfred",
     createdAt: "2021-05-03",
     updatedAt: formatDate(),
@@ -108,7 +108,7 @@ export const posts = [
   //       {
   //         _id: uuid(),
   //         fullName: "Alfred",
-  //         username: "wayne_family_butler",
+  //         username: "pennyworth",
   //         profileAvatar:
   //           "https://www.dccomics.com/sites/default/files/styles/character_thumb_160x160/public/Char_Profile_AlfredPennyworth_5c40ddc7b0e412.20200112.jpg?itok=tVwKTrvd",
   //       },
@@ -214,7 +214,7 @@ export const posts = [
   //     ],
   //     dislikedBy: [],
   //   },
-  //   username: "wayne_family_butler",
+  //   username: "pennyworth",
   //   fullName: "Alfred",
   //   createdAt: formatDate(),
   //   updatedAt: formatDate(),
@@ -254,7 +254,7 @@ export const posts = [
   //       comment:
   //         "Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.",
   //       fullName: "Alfred",
-  //       username: "wayne_family_butler",
+  //       username: "pennyworth",
   //       profileAvatar:
   //         "https://www.dccomics.com/sites/default/files/styles/character_thumb_160x160/public/Char_Profile_AlfredPennyworth_5c40ddc7b0e412.20200112.jpg?itok=tVwKTrvd",
   //       createdAt: formatDate(),

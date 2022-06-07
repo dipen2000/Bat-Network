@@ -1,0 +1,1 @@
+export { getSuggestedUsers } from "./getSuggestedUsers";
