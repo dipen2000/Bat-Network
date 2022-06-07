@@ -2,6 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import {
   getAllUsersService,
   updateProfileService,
+  addBookmarkService,
 } from "../../services/userService";
 
 export const getAllUsers = createAsyncThunk("user/getAllUsers", async () => {
@@ -24,6 +25,21 @@ export const updateProfile = createAsyncThunk(
 
       if (status === 201) {
         return data.user;
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  }
+);
+
+export const addBookMark = createAsyncThunk(
+  "user/addBookMark",
+  async ({ token, postId }) => {
+    try {
+      const { data, status } = await addBookmarkService(token, postId);
+
+      if (status === 200 || status === 201) {
+        return data.bookmarks;
       }
     } catch (e) {
       console.log(e);
@@ -55,6 +71,9 @@ const userSlice = createSlice({
         return user.username === payload.username ? payload : user;
       });
       state.isLoading = false;
+    },
+    [addBookMark.fulfilled]: (state, { payload }) => {
+      state.bookmarks = payload;
     },
   },
 });

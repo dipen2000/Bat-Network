@@ -111,16 +111,16 @@ const SinglePage = () => {
                       </div>
                     )}
                     <div className="flex-row gap-1">
-                      <div className="bord-3-purple flex-row post-card-single-CTA-container">
-                        <button>Like</button>
+                      <div className="bord-3-purple flex-row post-card-single-CTA-container align-center-flex">
+                        <i className="fa-regular fa-heart curs-point"></i>
                         <span>{singlePost?.likes.likeCount}</span>
                       </div>
-                      <div className="bord-3-purple flex-row post-card-single-CTA-container">
-                        <button>Comment</button>
+                      <div className="bord-3-purple flex-row post-card-single-CTA-container align-center-flex">
+                        <i className="fa-regular fa-comment curs-point"></i>
                         <span>{singlePost?.comments.length}</span>
                       </div>
-                      <div className="bord-3-purple flex-row post-card-single-CTA-container">
-                        <button>Bookmark</button>
+                      <div className="bord-3-purple flex-row post-card-single-CTA-container align-center-flex">
+                        <i className="fa-regular fa-bookmark curs-point"></i>
                       </div>
                     </div>
                   </div>

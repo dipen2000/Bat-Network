@@ -12,4 +12,14 @@ const updateProfileService = async (editInput, token) => {
   );
 };
 
-export { getAllUsersService, updateProfileService };
+const addBookmarkService = async (token, postId) => {
+  return await axios.post(
+    `/api/users/bookmark/${postId}`,
+    {},
+    {
+      headers: { authorization: token },
+    }
+  );
+};
+
+export { getAllUsersService, updateProfileService, addBookmarkService };
