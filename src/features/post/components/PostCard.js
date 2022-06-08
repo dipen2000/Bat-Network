@@ -3,15 +3,23 @@ import { Avatar } from "../../../Components/Avatar/Avatar";
 import { ButtonPrimary } from "../../../Components/Buttons";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { addBookMark } from "../../user/userSlice";
+import { addBookMark, removeBookMark } from "../../user/userSlice";
+// import { postInBookmarks } from "../../../Utils/postInBookmarks";
 
 const PostCard = ({ post }) => {
   const dispatch = useDispatch();
   const users = useSelector((state) => state.user.users);
   const token = useSelector((state) => state.auth.token);
+  const bookmarks = useSelector((state) => state.user.bookmarks);
+  const posts = useSelector((state) => state.post.posts);
   const navigate = useNavigate();
   const { content, fullName, username, likes, comments, id } = post;
   const userOfPost = users?.find((user) => user.username === username);
+  const currentPost = posts?.find((dbPost) => dbPost._id === post._id);
+
+  const isPostInBookmarks = bookmarks?.find(
+    (bookmark) => bookmark?._id === currentPost?._id
+  );
 
   return (
     <div
@@ -59,10 +67,16 @@ const PostCard = ({ post }) => {
           </div>
           <div className="bord-3-purple flex-row post-card-single-CTA-container align-center-flex">
             <i
-              className="fa-regular fa-bookmark curs-point"
+              className={`${
+                isPostInBookmarks ? "fa-solid" : "fa-regular"
+              } fa-bookmark curs-point`}
               onClick={(e) => {
                 e.stopPropagation();
-                dispatch(addBookMark({ token, postId: post._id }));
+                isPostInBookmarks
+                  ? dispatch(
+                      removeBookMark({ token, postId: currentPost?._id })
+                    )
+                  : dispatch(addBookMark({ token, postId: currentPost?._id }));
               }}
             ></i>
           </div>

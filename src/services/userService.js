@@ -12,6 +12,12 @@ const updateProfileService = async (editInput, token) => {
   );
 };
 
+const getBookMarksService = async (token) => {
+  return await axios.get("/api/users/bookmark", {
+    headers: { authorization: token },
+  });
+};
+
 const addBookmarkService = async (token, postId) => {
   return await axios.post(
     `/api/users/bookmark/${postId}`,
@@ -22,4 +28,20 @@ const addBookmarkService = async (token, postId) => {
   );
 };
 
-export { getAllUsersService, updateProfileService, addBookmarkService };
+const removeBookMarkService = async (token, postId) => {
+  return await axios.post(
+    `/api/users/remove-bookmark/${postId}`,
+    {},
+    {
+      headers: { authorization: token },
+    }
+  );
+};
+
+export {
+  getAllUsersService,
+  updateProfileService,
+  addBookmarkService,
+  getBookMarksService,
+  removeBookMarkService,
+};
