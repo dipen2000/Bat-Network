@@ -25,12 +25,6 @@ const PostCard = ({ post }) => {
     (likeUser) => likeUser.username === user.username
   );
 
-  console.log(
-    currentPost?.likes.likedBy,
-    currentPost?.likes.likeCount,
-    currentPost?.fullName
-  );
-
   return (
     <div
       className="new-post-container-grid bord-3-purple curs-point"
@@ -83,7 +77,7 @@ const PostCard = ({ post }) => {
           </div>
           <div className="bord-3-purple flex-row post-card-single-CTA-container align-center-flex">
             <i className="fa-regular fa-comment curs-point"></i>
-            <span>{comments.length}</span>
+            <span>{comments?.length}</span>
           </div>
           <div className="bord-3-purple flex-row post-card-single-CTA-container align-center-flex">
             <i
