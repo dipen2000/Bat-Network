@@ -91,52 +91,52 @@ export const posts = [
   //   updatedAt: formatDate(),
   //   comments: [],
   // },
-  // {
-  //   _id: uuid(),
-  //   content:
-  //     "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident",
-  //   likes: {
-  //     likeCount: 2,
-  //     likedBy: [
-  //       {
-  //         _id: uuid(),
-  //         fullName: "Alfred",
-  //         username: "pennyworth",
-  //         profileAvatar:
-  //           "https://www.dccomics.com/sites/default/files/styles/character_thumb_160x160/public/Char_Profile_AlfredPennyworth_5c40ddc7b0e412.20200112.jpg?itok=tVwKTrvd",
-  //       },
-  //       {
-  //         _id: uuid(),
-  //         fullName: "Nightwing",
-  //         username: "first_robin",
-  //         profileAvatar:
-  //           "https://www.dccomics.com/sites/default/files/styles/character_thumb_160x160/public/Char_Profile_Nightwing_2_5c50fa38094336.37015575.jpg?itok=elLGTA2E",
-  //       },
-  //     ],
-  //     dislikedBy: [],
-  //   },
-  //   username: "the_dark_knight",
-  //   fullName: "BATMAN",
-  //   createdAt: formatDate(),
-  //   updatedAt: formatDate(),
-  //   comments: [
-  //     {
-  //       _id: uuid(),
-  //       comment:
-  //         "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium",
-  //       fullName: "Nightwing",
-  //       username: "first_robin",
-  //       profileAvatar:
-  //         "https://www.dccomics.com/sites/default/files/styles/character_thumb_160x160/public/Char_Profile_Nightwing_2_5c50fa38094336.37015575.jpg?itok=elLGTA2E",
-  //       createdAt: formatDate(),
-  //       updatedAt: formatDate(),
-  //       votes: {
-  //         upvotedBy: [],
-  //         downvotedBy: [],
-  //       },
-  //     },
-  //   ],
-  // },
+  {
+    _id: uuid(),
+    content:
+      "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident",
+    likes: {
+      likeCount: 2,
+      likedBy: [
+        {
+          _id: uuid(),
+          fullName: "Alfred",
+          username: "pennyworth",
+          profileAvatar:
+            "https://www.dccomics.com/sites/default/files/styles/character_thumb_160x160/public/Char_Profile_AlfredPennyworth_5c40ddc7b0e412.20200112.jpg?itok=tVwKTrvd",
+        },
+        {
+          _id: uuid(),
+          fullName: "Nightwing",
+          username: "first_robin",
+          profileAvatar:
+            "https://www.dccomics.com/sites/default/files/styles/character_thumb_160x160/public/Char_Profile_Nightwing_2_5c50fa38094336.37015575.jpg?itok=elLGTA2E",
+        },
+      ],
+      dislikedBy: [],
+    },
+    username: "the_dark_knight",
+    fullName: "BATMAN",
+    createdAt: formatDate(),
+    updatedAt: formatDate(),
+    comments: [
+      {
+        _id: uuid(),
+        comment:
+          "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium",
+        fullName: "Nightwing",
+        username: "first_robin",
+        profileAvatar:
+          "https://www.dccomics.com/sites/default/files/styles/character_thumb_160x160/public/Char_Profile_Nightwing_2_5c50fa38094336.37015575.jpg?itok=elLGTA2E",
+        createdAt: formatDate(),
+        updatedAt: formatDate(),
+        votes: {
+          upvotedBy: [],
+          downvotedBy: [],
+        },
+      },
+    ],
+  },
   // {
   //   _id: uuid(),
   //   content:

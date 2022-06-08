@@ -47,6 +47,12 @@ const createPostService = async (input, token, user) => {
   );
 };
 
+const deletePostService = async (token, postId) => {
+  return await axios.delete(`/api/posts/${postId}`, {
+    headers: { authorization: token },
+  });
+};
+
 export {
   getPostsService,
   getSinglePostService,
@@ -54,4 +60,5 @@ export {
   likePostService,
   dislikePostService,
   createPostService,
+  deletePostService,
 };

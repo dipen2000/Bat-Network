@@ -5,6 +5,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { addBookMark, removeBookMark } from "../../user/userSlice";
 import { dislikePost, likePost } from "../postSlice";
+import { PostOptionsModal } from "./PostOptionsModal";
+import { useState } from "react";
 
 const PostCard = ({ post }) => {
   const dispatch = useDispatch();
@@ -24,6 +26,8 @@ const PostCard = ({ post }) => {
   const isLikedByLoggedInUser = currentPost?.likes.likedBy?.find(
     (likeUser) => likeUser.username === user.username
   );
+
+  const [postOptionsModal, setPostOptionsModal] = useState(false);
 
   return (
     <div
@@ -57,7 +61,23 @@ const PostCard = ({ post }) => {
             <span>·</span>
             <span>10min ago</span>
           </div>
-          <i className="fa-solid fa-ellipsis-vertical curs-point"></i>
+          <div className="relative">
+            <div
+              className="bord-3-red options-icon-container curs-point"
+              onClick={(e) => {
+                e.stopPropagation();
+                setPostOptionsModal((prevState) => !prevState);
+              }}
+            >
+              <i className="fa-solid fa-ellipsis-vertical curs-point"></i>
+            </div>
+            {postOptionsModal && (
+              <PostOptionsModal
+                post={post}
+                setPostOptionsModal={setPostOptionsModal}
+              />
+            )}
+          </div>
         </div>
         <div className="bord-3-blue">{content}</div>
         <div className="flex-row gap-1">
