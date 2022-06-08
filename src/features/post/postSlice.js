@@ -7,6 +7,7 @@ import {
   dislikePostService,
   createPostService,
   deletePostService,
+  editPostService,
 } from "../../services/postService";
 
 export const getPosts = createAsyncThunk("post/getPosts", async () => {
@@ -110,6 +111,21 @@ export const deletePost = createAsyncThunk(
   }
 );
 
+export const editPost = createAsyncThunk(
+  "post/editPost",
+  async ({ input, token, postId }) => {
+    try {
+      const { data, status } = await editPostService(input, token, postId);
+
+      if (status === 201) {
+        return data.posts;
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  }
+);
+
 const postSlice = createSlice({
   name: "post",
   initialState: {
@@ -159,6 +175,9 @@ const postSlice = createSlice({
       state.posts = payload;
     },
     [deletePost.fulfilled]: (state, { payload }) => {
+      state.posts = payload;
+    },
+    [editPost.fulfilled]: (state, { payload }) => {
       state.posts = payload;
     },
   },

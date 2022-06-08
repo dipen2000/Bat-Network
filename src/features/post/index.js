@@ -9,6 +9,7 @@ export {
   dislikePost,
   createPost,
   deletePost,
+  editPost,
 } from "./postSlice";
 export { PostCard } from "./components/PostCard";
 export { NewPost } from "./components/NewPost";

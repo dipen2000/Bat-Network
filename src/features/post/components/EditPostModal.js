@@ -1,32 +1,35 @@
 import "../styles.css";
-import { Avatar } from "../../../Components/Avatar/Avatar";
 import { useSelector, useDispatch } from "react-redux";
+import { Avatar } from "../../../Components/Avatar/Avatar";
 import { useState } from "react";
+import { editPost } from "../postSlice";
 import { ButtonPrimary, ButtonSecondary } from "../../../Components/Buttons";
-import { createPost } from "../postSlice";
-const NewPostModal = ({ setNewPostModal }) => {
+const EditPostModal = ({ post, setEditPostModal, setPostOptionsModal }) => {
   const dispatch = useDispatch();
-  const [input, setInput] = useState("");
+  const [input, setInput] = useState(post.content);
+  const { token } = useSelector((state) => state.auth);
   const users = useSelector((state) => state.user.users);
-  const newPostModalChangeHandler = (e) => {
+  const currentUser = users?.find(
+    (dbUser) => dbUser.username === post.username
+  );
+
+  const editPostModalChangeHandler = (e) => {
     setInput(e.target.value);
   };
 
-  const { token, user } = useSelector((state) => state.auth);
-
-  const currentUser = users?.find(
-    (dbUser) => dbUser.username === user.username
-  );
-
-  const newPostFormHandler = (e) => {
+  const editModalSubmitHandler = (e) => {
     e.preventDefault();
-    dispatch(createPost({ input, token, user }));
-    setInput("");
-    setNewPostModal(false);
+    dispatch(editPost({ token, input, postId: post._id }));
+    setEditPostModal(false);
+    setPostOptionsModal(false);
   };
-
   return (
-    <div className="modal-section-overlay flex-col justify-center-flex align-center-flex">
+    <div
+      className="modal-section-overlay flex-col justify-center-flex align-center-flex"
+      onClick={(e) => {
+        e.stopPropagation();
+      }}
+    >
       <div className="new-post-container-grid bord-3-purple curs-point new-post-container">
         <div className="bord-3-green">
           <div className="bord-3-green">
@@ -38,13 +41,13 @@ const NewPostModal = ({ setNewPostModal }) => {
           </div>
         </div>
         <div className="bord-3-green">
-          <form onSubmit={newPostFormHandler}>
+          <form onSubmit={editModalSubmitHandler}>
             <div className="flex-col gap-1">
               <textarea
                 className="post-text-area"
                 name="text"
                 placeholder="What's happening?"
-                onChange={newPostModalChangeHandler}
+                onChange={editPostModalChangeHandler}
                 value={input}
               />
               <div className="flex-row justify-end-flex gap-1">
@@ -52,8 +55,7 @@ const NewPostModal = ({ setNewPostModal }) => {
                   type="button"
                   onClick={(e) => {
                     e.stopPropagation();
-                    setInput("");
-                    setNewPostModal(false);
+                    setEditPostModal(false);
                   }}
                 >
                   Cancel
@@ -68,4 +70,4 @@ const NewPostModal = ({ setNewPostModal }) => {
   );
 };
 
-export { NewPostModal };
+export { EditPostModal };

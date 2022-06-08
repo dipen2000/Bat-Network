@@ -53,6 +53,18 @@ const deletePostService = async (token, postId) => {
   });
 };
 
+const editPostService = async (input, token, postId) => {
+  return await axios.post(
+    `/api/posts/edit/${postId}`,
+    {
+      postData: { content: input },
+    },
+    {
+      headers: { authorization: token },
+    }
+  );
+};
+
 export {
   getPostsService,
   getSinglePostService,
@@ -61,4 +73,5 @@ export {
   dislikePostService,
   createPostService,
   deletePostService,
+  editPostService,
 };
