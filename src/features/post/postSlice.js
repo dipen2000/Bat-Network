@@ -3,6 +3,8 @@ import {
   getPostsService,
   getSinglePostService,
   getPostsOfUserService,
+  likePostService,
+  dislikePostService,
 } from "../../services/postService";
 
 export const getPosts = createAsyncThunk("post/getPosts", async () => {
@@ -38,6 +40,36 @@ export const getPostsOfUser = createAsyncThunk(
       const { data, status } = await getPostsOfUserService(username);
 
       if (status === 200) {
+        return data.posts;
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  }
+);
+
+export const likePost = createAsyncThunk(
+  "post/likePost",
+  async ({ token, postId }) => {
+    try {
+      const { data, status } = await likePostService(token, postId);
+
+      if (status === 201) {
+        return data.posts;
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  }
+);
+
+export const dislikePost = createAsyncThunk(
+  "post/dislikePost",
+  async ({ token, postId }) => {
+    try {
+      const { data, status } = await dislikePostService(token, postId);
+
+      if (status === 201) {
         return data.posts;
       }
     } catch (e) {
@@ -84,6 +116,12 @@ const postSlice = createSlice({
     [getPostsOfUser.fulfilled]: (state, { payload }) => {
       state.isLoading = false;
       state.postsOfUser = payload;
+    },
+    [likePost.fulfilled]: (state, { payload }) => {
+      state.posts = payload;
+    },
+    [dislikePost.fulfilled]: (state, { payload }) => {
+      state.posts = payload;
     },
   },
 });

@@ -58,7 +58,7 @@ export const posts = [
     content:
       "Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.",
     likes: {
-      likeCount: 2,
+      likeCount: 1,
       likedBy: [
         {
           _id: uuid(),
@@ -66,13 +66,6 @@ export const posts = [
           username: "pennyworth",
           profileAvatar:
             "https://www.dccomics.com/sites/default/files/styles/character_thumb_160x160/public/Char_Profile_AlfredPennyworth_5c40ddc7b0e412.20200112.jpg?itok=tVwKTrvd",
-        },
-        {
-          _id: uuid(),
-          fullName: "BATMAN",
-          username: "the_dark_knight",
-          profileAvatar:
-            "https://www.dccomics.com/sites/default/files/styles/character_thumb_160x160/public/Char_Profile_Batman_20190116_5c3fc4b40faec2.47318964.jpg?itok=u4BHrDeE",
         },
       ],
       dislikedBy: [],
@@ -149,16 +142,8 @@ export const posts = [
     content:
       "Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.",
     likes: {
-      likeCount: 1,
-      likedBy: [
-        {
-          _id: uuid(),
-          fullName: "BATMAN",
-          username: "the_dark_knight",
-          profileAvatar:
-            "https://www.dccomics.com/sites/default/files/styles/character_thumb_160x160/public/Char_Profile_Batman_20190116_5c3fc4b40faec2.47318964.jpg?itok=u4BHrDeE",
-        },
-      ],
+      likeCount: 0,
+      likedBy: [],
       dislikedBy: [],
     },
     username: "first_robin",
@@ -188,15 +173,8 @@ export const posts = [
     content:
       "Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint ",
     likes: {
-      likeCount: 3,
+      likeCount: 2,
       likedBy: [
-        {
-          _id: uuid(),
-          fullName: "BATMAN",
-          username: "the_dark_knight",
-          profileAvatar:
-            "https://www.dccomics.com/sites/default/files/styles/character_thumb_160x160/public/Char_Profile_Batman_20190116_5c3fc4b40faec2.47318964.jpg?itok=u4BHrDeE",
-        },
         {
           _id: uuid(),
           fullName: "Nightwing",

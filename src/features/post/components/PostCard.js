@@ -4,12 +4,12 @@ import { ButtonPrimary } from "../../../Components/Buttons";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { addBookMark, removeBookMark } from "../../user/userSlice";
-// import { postInBookmarks } from "../../../Utils/postInBookmarks";
+import { dislikePost, likePost } from "../postSlice";
 
 const PostCard = ({ post }) => {
   const dispatch = useDispatch();
   const users = useSelector((state) => state.user.users);
-  const token = useSelector((state) => state.auth.token);
+  const { token, user } = useSelector((state) => state.auth);
   const bookmarks = useSelector((state) => state.user.bookmarks);
   const posts = useSelector((state) => state.post.posts);
   const navigate = useNavigate();
@@ -19,6 +19,16 @@ const PostCard = ({ post }) => {
 
   const isPostInBookmarks = bookmarks?.find(
     (bookmark) => bookmark?._id === currentPost?._id
+  );
+
+  const isLikedByLoggedInUser = currentPost?.likes.likedBy?.find(
+    (likeUser) => likeUser.username === user.username
+  );
+
+  console.log(
+    currentPost?.likes.likedBy,
+    currentPost?.likes.likeCount,
+    currentPost?.fullName
   );
 
   return (
@@ -58,7 +68,17 @@ const PostCard = ({ post }) => {
         <div className="bord-3-blue">{content}</div>
         <div className="flex-row gap-1">
           <div className="bord-3-purple flex-row post-card-single-CTA-container align-center-flex">
-            <i className="fa-regular fa-heart curs-point"></i>
+            <i
+              className={`${
+                isLikedByLoggedInUser ? "fa-solid" : "fa-regular"
+              } fa-heart curs-point`}
+              onClick={(e) => {
+                e.stopPropagation();
+                isLikedByLoggedInUser
+                  ? dispatch(dislikePost({ token, postId: currentPost?._id }))
+                  : dispatch(likePost({ token, postId: currentPost?._id }));
+              }}
+            ></i>
             <span>{likes.likeCount}</span>
           </div>
           <div className="bord-3-purple flex-row post-card-single-CTA-container align-center-flex">
