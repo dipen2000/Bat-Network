@@ -1,3 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Viga&display=swap');
+:root{
+  --primary-color : #141213;
+  --post-color : #294842; 
+  --btn-color : #fff001;
+}
+
+.app-title{
+  font-family: 'Viga', sans-serif;
+  padding : 0.8rem 0;
+  font-size : 2.2rem;
+}
+
 .flex-row{
   display : flex;
     flex-direction: row;
@@ -101,18 +114,22 @@
 .App{
   font-family: var(--component-heading-font);
   min-height: 100vh;
+  background-color: var(--primary-color);
+  color : ghostwhite;
 }
 
 .home-grid-container{
   display : grid;
   grid-template-columns: 20rem 1fr 28rem;
   grid-template-rows: 1fr;
+  gap : 1rem;
 }
 
 .user-avatar{
   width : 40px;
   height : 40px;
   border-radius: 50%;
+  /* border : 3px solid var(--primary-color); */
 }
 
 .avatar-img{

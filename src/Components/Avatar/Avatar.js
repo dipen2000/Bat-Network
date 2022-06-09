@@ -1,7 +1,7 @@
 import "./Avatar.css";
 const Avatar = ({ avatar, fullName, username }) => {
   return (
-    <div className="user-avatar bord-3-yellow">
+    <div className="user-avatar">
       <img
         className="img-resp avatar-img"
         src={avatar}

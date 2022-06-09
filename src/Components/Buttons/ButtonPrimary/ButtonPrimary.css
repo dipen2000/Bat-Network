@@ -1,0 +1,8 @@
+.button-primary{
+    padding : 0.8rem 1.5rem;
+    border-radius: 3rem;
+    outline : none;
+    border : none;
+    font-size: 1.5rem;
+    background-color : var(--btn-color);
+}

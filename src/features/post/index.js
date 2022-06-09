@@ -12,6 +12,7 @@ export {
   editPost,
   addComment,
   deleteComment,
+  setActiveSort,
 } from "./postSlice";
 export { PostCard } from "./components/PostCard";
 export { NewPost } from "./components/NewPost";

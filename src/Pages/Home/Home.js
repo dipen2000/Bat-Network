@@ -9,7 +9,7 @@ import { useEffect } from "react";
 import { getPosts } from "../../features/post";
 import { getAllUsers } from "../../features/user";
 import { useDispatch, useSelector } from "react-redux";
-import { getLoggedInUserFeed } from "../../Utils";
+import { getLoggedInUserFeed, sortPostsByFilter } from "../../Utils";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -17,6 +17,7 @@ const Home = () => {
   const users = useSelector((state) => state.user.users);
   const posts = useSelector((state) => state.post.posts);
   const isLoading = useSelector((state) => state.post.isLoading);
+  const activeSort = useSelector((state) => state.post.activeSort);
 
   useEffect(() => {
     dispatch(getPosts());
@@ -29,19 +30,21 @@ const Home = () => {
 
   const loggedInUserFeed = getLoggedInUserFeed({ loggedInUser, posts });
 
+  const userFeed = sortPostsByFilter(loggedInUserFeed, activeSort);
+
   return (
     <BatNetworkContainer>
       <div className="home-grid-container bord-3-purple">
         <Sidebar />
         <div className="bord-3-red">
           <div className="flex-col">
-            <div className="page-title bord-3-black">Home</div>
+            <h3 className="page-title">Home</h3>
             <NewPost />
             <SortBar />
             {isLoading ? (
               <div>Loading...</div>
-            ) : loggedInUserFeed.length ? (
-              [...loggedInUserFeed].reverse().map((post) => {
+            ) : userFeed.length ? (
+              [...userFeed].reverse().map((post) => {
                 return <PostCard key={post._id} post={post} />;
               })
             ) : (

@@ -202,6 +202,9 @@ const postSlice = createSlice({
     resetPostsOfUser: (state) => {
       state.postsOfUser = [];
     },
+    setActiveSort: (state, { payload }) => {
+      state.activeSort = payload;
+    },
   },
 
   extraReducers: {
@@ -253,6 +256,6 @@ const postSlice = createSlice({
   },
 });
 
-export const { resetPostsOfUser } = postSlice.actions;
+export const { resetPostsOfUser, setActiveSort } = postSlice.actions;
 
 export default postSlice.reducer;
