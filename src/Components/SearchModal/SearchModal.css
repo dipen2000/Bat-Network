@@ -1,0 +1,12 @@
+.search-modal-container{
+    width : 100%;
+    border : 3px solid green;
+    top : 50px;
+    background-color : white;
+    z-index: 999;
+    
+}
+
+.single-search-result{
+    padding : 0.5rem 0.8rem;
+}

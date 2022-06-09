@@ -9,9 +9,12 @@ import { useEffect } from "react";
 import { getPosts } from "../../features/post";
 import { getAllUsers } from "../../features/user";
 import { useDispatch, useSelector } from "react-redux";
+import { getLoggedInUserFeed } from "../../Utils";
 
 const Home = () => {
   const dispatch = useDispatch();
+  const user = useSelector((state) => state.auth.user);
+  const users = useSelector((state) => state.user.users);
   const posts = useSelector((state) => state.post.posts);
   const isLoading = useSelector((state) => state.post.isLoading);
 
@@ -19,6 +22,12 @@ const Home = () => {
     dispatch(getPosts());
     dispatch(getAllUsers());
   }, [dispatch]);
+
+  const loggedInUser = users?.find(
+    (dbUser) => dbUser.username === user.username
+  );
+
+  const loggedInUserFeed = getLoggedInUserFeed({ loggedInUser, posts });
 
   return (
     <BatNetworkContainer>
@@ -31,12 +40,14 @@ const Home = () => {
             <SortBar />
             {isLoading ? (
               <div>Loading...</div>
-            ) : posts.length ? (
-              [...posts].reverse().map((post) => {
+            ) : loggedInUserFeed.length ? (
+              [...loggedInUserFeed].reverse().map((post) => {
                 return <PostCard key={post._id} post={post} />;
               })
             ) : (
-              <div>No posts</div>
+              <div>
+                No posts in your feed go follow some people to see their posts.
+              </div>
             )}
           </div>
         </div>
