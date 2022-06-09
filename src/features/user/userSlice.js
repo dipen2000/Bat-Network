@@ -5,7 +5,21 @@ import {
   addBookmarkService,
   getBookMarksService,
   removeBookMarkService,
+  unfollowUserService,
+  followUserService,
 } from "../../services/userService";
+
+const updateFollowingUser = (users, followingUser) => {
+  return [...users].map((user) =>
+    user._id === followingUser._id ? followingUser : user
+  );
+};
+
+const updateFollowedUser = (users, followedUser) => {
+  return [...users].map((user) =>
+    user._id === followedUser._id ? followedUser : user
+  );
+};
 
 export const getAllUsers = createAsyncThunk("user/getAllUsers", async () => {
   try {
@@ -69,9 +83,40 @@ export const removeBookMark = createAsyncThunk(
   async ({ token, postId }) => {
     try {
       const { data, status } = await removeBookMarkService(token, postId);
-
+      console.log(data);
       if (status === 200) {
         return data.bookmarks;
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  }
+);
+
+export const unfollowUser = createAsyncThunk(
+  "user/unfollowUser",
+  async ({ token, followUserId }) => {
+    try {
+      const { data, status } = await unfollowUserService(token, followUserId);
+      console.log(data);
+
+      if (status === 200) {
+        return data;
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  }
+);
+
+export const followUser = createAsyncThunk(
+  "user/followUser",
+  async ({ token, followUserId }) => {
+    try {
+      const { data, status } = await followUserService(token, followUserId);
+
+      if (status === 200) {
+        return data;
       }
     } catch (e) {
       console.log(e);
@@ -116,6 +161,14 @@ const userSlice = createSlice({
     },
     [removeBookMark.fulfilled]: (state, { payload }) => {
       state.bookmarks = payload;
+    },
+    [unfollowUser.fulfilled]: (state, { payload }) => {
+      state.users = updateFollowingUser(state.users, payload.user);
+      state.users = updateFollowedUser(state.users, payload.followUser);
+    },
+    [followUser.fulfilled]: (state, { payload }) => {
+      state.users = updateFollowingUser(state.users, payload.user);
+      state.users = updateFollowedUser(state.users, payload.followUser);
     },
   },
 });

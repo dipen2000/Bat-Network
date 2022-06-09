@@ -38,10 +38,32 @@ const removeBookMarkService = async (token, postId) => {
   );
 };
 
+const unfollowUserService = async (token, followUserId) => {
+  return await axios.post(
+    `/api/users/unfollow/${followUserId}`,
+    {},
+    {
+      headers: { authorization: token },
+    }
+  );
+};
+
+const followUserService = async (token, followUserId) => {
+  return await axios.post(
+    `/api/users/follow/${followUserId}`,
+    {},
+    {
+      headers: { authorization: token },
+    }
+  );
+};
+
 export {
   getAllUsersService,
   updateProfileService,
   addBookmarkService,
   getBookMarksService,
   removeBookMarkService,
+  unfollowUserService,
+  followUserService,
 };

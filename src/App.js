@@ -3,10 +3,13 @@ import { NavRoutes } from "./Routes/NavRoutes";
 import { useSelector } from "react-redux";
 
 function App() {
-  // const bookmarks = useSelector((state) => state.user.bookmarks);
-  // // console.log(bookmarks);
-  // const posts = useSelector((state) => state.post.posts);
-  // console.log(posts[0]?.likedBy);
+  const users = useSelector((state) => state.user.users);
+  // const catwomanObj = users?.find((dbUser) => {
+  //   dbUser?.username === "the_cat";
+  // });
+  // console.log(users[users?.length - 2]);
+  // console.log(users[0]);
+  // console.log(catwomanObj);
   return (
     <div className="App bord-3-blue">
       <NavRoutes />
