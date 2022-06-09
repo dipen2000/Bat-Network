@@ -27,9 +27,9 @@ const NewPostModal = ({ setNewPostModal }) => {
 
   return (
     <div className="modal-section-overlay flex-col justify-center-flex align-center-flex">
-      <div className="new-post-container-grid bord-3-purple curs-point new-post-container">
-        <div className="bord-3-green">
-          <div className="bord-3-green">
+      <div className="new-post-container-grid  curs-point new-post-container modal-primary-color">
+        <div className="">
+          <div className="">
             <Avatar
               avatar={currentUser?.profileAvatar}
               username={currentUser?.username}
@@ -37,7 +37,7 @@ const NewPostModal = ({ setNewPostModal }) => {
             />
           </div>
         </div>
-        <div className="bord-3-green">
+        <div className="">
           <form onSubmit={newPostFormHandler}>
             <div className="flex-col gap-1">
               <textarea

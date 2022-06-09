@@ -24,7 +24,7 @@ const CommentOptionsModal = ({ comment, setCommentOptionsModal, postId }) => {
         {comment.username === user.username ? (
           <div>
             <div
-              className="single-option-container bord-3-red flex-row align-center-flex justify-center-flex curs-point gap-z-5"
+              className="single-option-container  flex-row align-center-flex justify-center-flex curs-point gap-z-5"
               onClick={(e) => {
                 e.stopPropagation();
                 setEditCommentModal(true);
@@ -34,7 +34,7 @@ const CommentOptionsModal = ({ comment, setCommentOptionsModal, postId }) => {
               <span>Edit</span>
             </div>
             <div
-              className="single-option-container bord-3-red flex-row align-center-flex justify-center-flex curs-point gap-z-5"
+              className="single-option-container  flex-row align-center-flex justify-center-flex curs-point gap-z-5"
               onClick={(e) => {
                 e.stopPropagation();
                 dispatch(
@@ -48,7 +48,7 @@ const CommentOptionsModal = ({ comment, setCommentOptionsModal, postId }) => {
             </div>
           </div>
         ) : (
-          <div className="single-option-container bord-3-red flex-row align-center-flex justify-center-flex curs-point gap-z-5">
+          <div className="single-option-container  flex-row align-center-flex justify-center-flex curs-point gap-z-5">
             <div className="flex-row gap-z-5 align-center-flex justify-center-flex follow-unfollow-small-fonts-for-modal">
               <i
                 className={`fa-solid ${

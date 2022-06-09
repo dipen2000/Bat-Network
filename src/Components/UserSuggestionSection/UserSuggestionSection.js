@@ -14,14 +14,14 @@ const UserSuggestionSection = () => {
   return (
     <div>
       {userSuggestionArr.length > 0 && (
-        <div className="bord-3-blue user-suggestion-section">
+        <div className=" user-suggestion-section flex-col gap-1">
           <h3>Who to follow</h3>
-          <div className="flex-col bord-3-red gap-1">
+          <div className="flex-col  gap-1">
             {userSuggestionArr.map((user) => {
               return (
                 <div
                   key={user?._id}
-                  className="flex-row justify-space-between-flex bord-3-purple align-center-flex curs-point"
+                  className="flex-row justify-space-between-flex single-user-suggestion-container align-center-flex curs-point"
                   onClick={() => {
                     navigate(`/profile/${user?.username}`);
                   }}

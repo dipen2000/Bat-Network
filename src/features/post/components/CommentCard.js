@@ -15,9 +15,9 @@ const CommentCard = ({ comment, postId }) => {
   const [commentOptionsModal, setCommentOptionsModal] = useState(false);
 
   return (
-    <div className="new-post-container-grid bord-3-purple">
+    <div className="new-post-container-grid card-borders">
       <div
-        className="bord-3-green curs-point"
+        className=" curs-point"
         onClick={(e) => {
           e.stopPropagation();
           navigate(`/profile/${currentUser?.username}`);
@@ -29,7 +29,7 @@ const CommentCard = ({ comment, postId }) => {
           fullName={currentUser?.fullName}
         />
       </div>
-      <div className="flex-col bord-3-blue">
+      <div className="flex-col ">
         <div className="flex-row justify-space-between-flex align-center-flex">
           <div
             className="flex-row align-center-flex user-username-for-post-details curs-point"
@@ -45,7 +45,7 @@ const CommentCard = ({ comment, postId }) => {
           </div>
           <div className="relative">
             <div
-              className="bord-3-red options-icon-container curs-point"
+              className=" options-icon-container curs-point"
               onClick={(e) => {
                 e.stopPropagation();
                 setCommentOptionsModal((prevState) => !prevState);
@@ -62,7 +62,7 @@ const CommentCard = ({ comment, postId }) => {
             )}
           </div>
         </div>
-        <div className="bord-3-red">{comment.comment}</div>
+        <div className="">{comment.comment}</div>
       </div>
     </div>
   );

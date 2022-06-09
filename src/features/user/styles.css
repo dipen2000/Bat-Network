@@ -21,6 +21,14 @@
 
 .edit-profile-modal-input-container{
     padding : 0.5rem;
-    border : 3px solid black;
+    
     line-height: 1.3;
+}
+
+.user-profile-input{
+    font-family: var(--component-heading-font);
+    outline : none;
+    padding : 0.8rem 1rem;
+    border-radius: 1rem;
+    border : none;
 }

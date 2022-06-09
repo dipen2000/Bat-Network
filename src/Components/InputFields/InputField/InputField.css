@@ -1,8 +1,9 @@
 .input-field-container{
-    border : 3px solid black;
     width : 30rem;
 }
 
 .input-field{
     padding : 0.5rem;
+    font-family: var(--component-heading-font);
+    outline: none;
 }

@@ -79,24 +79,24 @@ const SinglePage = () => {
 
   return (
     <BatNetworkContainer>
-      <div className="home-grid-container bord-3-purple">
+      <div className="home-grid-container">
         <Sidebar />
-        <div className="bord-3-red flex-col">
-          <div className="bord-3-green flex-row gap-1 align-center-flex single-post-navigation">
+        <div className="flex-col">
+          <div className="flex-row gap-1 align-center-flex single-post-navigation">
             <i
               className="fa-solid fa-arrow-left curs-point"
               onClick={() => navigate(-1)}
             ></i>
             <h3>Post</h3>
           </div>
-          <div className="bord-3-green">
+          <div className="">
             {isLoading ? (
               <div>Loading...</div>
             ) : currentPost ? (
               <div>
-                <div className="new-post-container-grid bord-3-purple">
+                <div className="new-post-container-grid  card-borders">
                   <div
-                    className="bord-3-green curs-point"
+                    className="curs-point"
                     onClick={(e) => {
                       e.stopPropagation();
                       navigate(`/profile/${currentUser?.username}`);
@@ -108,7 +108,7 @@ const SinglePage = () => {
                       fullName={currentUser?.fullName}
                     />
                   </div>
-                  <div className="flex-col bord-3-yellow gap-1">
+                  <div className="flex-col gap-1">
                     <div className="flex-row justify-space-between-flex align-center-flex">
                       <div
                         className="flex-row align-center-flex user-username-for-post-details curs-point"
@@ -124,7 +124,7 @@ const SinglePage = () => {
                       </div>
                       <div className="relative">
                         <div
-                          className="bord-3-red options-icon-container curs-point"
+                          className=" options-icon-container curs-point"
                           onClick={(e) => {
                             e.stopPropagation();
                             setPostOptionsModal((prevState) => !prevState);
@@ -140,7 +140,7 @@ const SinglePage = () => {
                         )}
                       </div>
                     </div>
-                    <div className="bord-3-blue">{currentPost?.content}</div>
+                    <div className="">{currentPost?.content}</div>
                     {currentPost?.likes.likeCount > 0 && (
                       <div
                         className="underline-hover curs-point"
@@ -158,68 +158,72 @@ const SinglePage = () => {
                       </div>
                     )}
                     <div className="flex-row gap-1">
-                      <div className="bord-3-purple flex-row post-card-single-CTA-container align-center-flex">
+                      <div
+                        className=" flex-row post-card-single-CTA-container align-center-flex"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          isLikedByLoggedInUser
+                            ? dispatch(
+                                dislikePost({
+                                  token,
+                                  postId: currentPost?._id,
+                                })
+                              )
+                            : dispatch(
+                                likePost({ token, postId: currentPost?._id })
+                              );
+                        }}
+                      >
                         <i
                           className={`${
                             isLikedByLoggedInUser ? "fa-solid" : "fa-regular"
                           } fa-heart curs-point`}
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            isLikedByLoggedInUser
-                              ? dispatch(
-                                  dislikePost({
-                                    token,
-                                    postId: currentPost?._id,
-                                  })
-                                )
-                              : dispatch(
-                                  likePost({ token, postId: currentPost?._id })
-                                );
-                          }}
                         ></i>
                         <span>{currentPost?.likes.likeCount}</span>
                       </div>
-                      <div className="bord-3-purple flex-row post-card-single-CTA-container align-center-flex">
+                      <div className=" flex-row post-card-single-CTA-container align-center-flex">
                         <i className="fa-regular fa-comment curs-point"></i>
                         <span>{currentPost?.comments?.length}</span>
                       </div>
-                      <div className="bord-3-purple flex-row post-card-single-CTA-container align-center-flex">
+                      <div
+                        className=" flex-row post-card-single-CTA-container align-center-flex"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          isPostInBookMarks
+                            ? dispatch(
+                                removeBookMark({
+                                  token,
+                                  postId: currentPost?._id,
+                                })
+                              )
+                            : dispatch(
+                                addBookMark({
+                                  token,
+                                  postId: currentPost?._id,
+                                })
+                              );
+                        }}
+                      >
                         <i
                           className={`${
                             isPostInBookMarks ? "fa-solid" : "fa-regular"
                           } fa-bookmark curs-point`}
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            isPostInBookMarks
-                              ? dispatch(
-                                  removeBookMark({
-                                    token,
-                                    postId: currentPost?._id,
-                                  })
-                                )
-                              : dispatch(
-                                  addBookMark({
-                                    token,
-                                    postId: currentPost?._id,
-                                  })
-                                );
-                          }}
                         ></i>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div className="new-post-container-grid bord-3-purple">
-                  <div className="bord-3-green">
+                <div className="new-post-container-grid card-borders">
+                  <div className="">
                     <Avatar
                       avatar={loggedInUser.profileAvatar}
                       username={loggedInUser.username}
                       fullName={loggedInUser.fullName}
                     />
                   </div>
-                  <div className="bord-3-purple">
+                  <div className="">
                     <form
-                      className="reply-container bord-3-blue"
+                      className="reply-container"
                       onSubmit={newCommentSubmitHandler}
                     >
                       <div className="flex-row align-center-flex gap-1">

@@ -32,11 +32,11 @@ const PostCard = ({ post }) => {
 
   return (
     <div
-      className="new-post-container-grid bord-3-purple curs-point"
+      className="new-post-container-grid curs-point card-borders"
       onClick={() => navigate(`/post/${id}`)}
     >
       <div
-        className="bord-3-green"
+        className=""
         onClick={(e) => {
           e.stopPropagation();
           navigate(`/profile/${username}`);
@@ -48,10 +48,10 @@ const PostCard = ({ post }) => {
           fullName={userOfPost?.fullName}
         />
       </div>
-      <div className="flex-col bord-3-yellow gap-1">
+      <div className="flex-col gap-1">
         <div className="flex-row justify-space-between-flex align-center-flex">
           <div
-            className="flex-row align-center-flex user-username-for-post-details curs-point bord-3-blue test-5"
+            className="flex-row align-center-flex user-username-for-post-details curs-point  test-5"
             onClick={(e) => {
               e.stopPropagation();
               navigate(`/profile/${userOfPost?.username}`);
@@ -64,7 +64,7 @@ const PostCard = ({ post }) => {
           </div>
           <div className="relative">
             <div
-              className="bord-3-red options-icon-container curs-point"
+              className="options-icon-container curs-point"
               onClick={(e) => {
                 e.stopPropagation();
                 setPostOptionsModal((prevState) => !prevState);
@@ -80,39 +80,41 @@ const PostCard = ({ post }) => {
             )}
           </div>
         </div>
-        <div className="bord-3-blue">{content}</div>
+        <div className="">{content}</div>
         <div className="flex-row gap-1">
-          <div className="bord-3-purple flex-row post-card-single-CTA-container align-center-flex">
+          <div
+            className=" flex-row post-card-single-CTA-container align-center-flex"
+            onClick={(e) => {
+              e.stopPropagation();
+              isLikedByLoggedInUser
+                ? dispatch(dislikePost({ token, postId: currentPost?._id }))
+                : dispatch(likePost({ token, postId: currentPost?._id }));
+            }}
+          >
             <i
               className={`${
                 isLikedByLoggedInUser ? "fa-solid" : "fa-regular"
               } fa-heart curs-point`}
-              onClick={(e) => {
-                e.stopPropagation();
-                isLikedByLoggedInUser
-                  ? dispatch(dislikePost({ token, postId: currentPost?._id }))
-                  : dispatch(likePost({ token, postId: currentPost?._id }));
-              }}
             ></i>
             <span>{likes.likeCount}</span>
           </div>
-          <div className="bord-3-purple flex-row post-card-single-CTA-container align-center-flex">
+          <div className=" flex-row post-card-single-CTA-container align-center-flex">
             <i className="fa-regular fa-comment curs-point"></i>
             <span>{comments?.length}</span>
           </div>
-          <div className="bord-3-purple flex-row post-card-single-CTA-container align-center-flex">
+          <div
+            className=" flex-row post-card-single-CTA-container align-center-flex"
+            onClick={(e) => {
+              e.stopPropagation();
+              isPostInBookmarks
+                ? dispatch(removeBookMark({ token, postId: currentPost?._id }))
+                : dispatch(addBookMark({ token, postId: currentPost?._id }));
+            }}
+          >
             <i
               className={`${
                 isPostInBookmarks ? "fa-solid" : "fa-regular"
               } fa-bookmark curs-point`}
-              onClick={(e) => {
-                e.stopPropagation();
-                isPostInBookmarks
-                  ? dispatch(
-                      removeBookMark({ token, postId: currentPost?._id })
-                    )
-                  : dispatch(addBookMark({ token, postId: currentPost?._id }));
-              }}
             ></i>
           </div>
         </div>

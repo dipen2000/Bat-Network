@@ -10,6 +10,9 @@
 }
 
 .search-bar-input{
-    padding : 0.8rem;
+    padding : 1rem 1.2rem;
     font-family: var(--component-heading-font);
+    outline: none;
+    border-radius: 3rem;
+    border : 3px solid var(--post-color);
 }

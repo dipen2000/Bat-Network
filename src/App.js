@@ -12,7 +12,7 @@ function App() {
   // console.log(catwomanObj);
   const batmanUser = users?.f;
   return (
-    <div className="App bord-3-blue">
+    <div className="App ">
       <NavRoutes />
     </div>
   );

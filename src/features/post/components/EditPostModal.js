@@ -30,9 +30,9 @@ const EditPostModal = ({ post, setEditPostModal, setPostOptionsModal }) => {
         e.stopPropagation();
       }}
     >
-      <div className="new-post-container-grid bord-3-purple curs-point new-post-container">
-        <div className="bord-3-green">
-          <div className="bord-3-green">
+      <div className="new-post-container-grid modal-primary-color curs-point new-post-container">
+        <div className="">
+          <div className="">
             <Avatar
               avatar={currentUser?.profileAvatar}
               username={currentUser?.username}
@@ -40,7 +40,7 @@ const EditPostModal = ({ post, setEditPostModal, setPostOptionsModal }) => {
             />
           </div>
         </div>
-        <div className="bord-3-green">
+        <div className="">
           <form onSubmit={editModalSubmitHandler}>
             <div className="flex-col gap-1">
               <textarea

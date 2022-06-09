@@ -6,11 +6,11 @@ const SortModal = () => {
   const dispatch = useDispatch();
   const activeSort = useSelector((state) => state.post.activeSort);
   const activeSortStyle = {
-    color: "blue",
+    color: "var(--btn-color)",
   };
 
   return (
-    <div className="absolute sort-options-modal-container">
+    <div className="absolute sort-options-modal-container modal-primary-color">
       <div className="flex-col">
         <div
           onClick={(e) => {

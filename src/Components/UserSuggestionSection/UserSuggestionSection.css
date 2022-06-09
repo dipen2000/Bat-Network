@@ -1,0 +1,11 @@
+.user-suggestion-section{
+    padding : 0.8rem;
+    border-radius: 1.5rem;
+    background-color : var(--post-color);
+}
+
+.single-user-suggestion-container{
+    padding : 0.8rem;
+    border-radius : 1.5rem;
+    background-color : var(--primary-color);
+}

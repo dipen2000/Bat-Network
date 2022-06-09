@@ -14,8 +14,12 @@
 }
 
 .reply-input-box{
-    padding : 0.5rem;
-    
+    padding : 0.5rem 0.8rem;
+    font-size: 1.4rem;
+    outline: none;
+    border : none;
+    border-radius: 1rem;
+
 }
 
 .reply-container{

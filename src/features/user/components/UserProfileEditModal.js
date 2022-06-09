@@ -29,7 +29,7 @@ const UserProfileEditModal = ({ setUserProfileModal }) => {
 
   return (
     <div className="modal-section-overlay flex-col align-center-flex justify-center-flex">
-      <div className="modal-padding flex-col edit-user-modal-container bord-3-green gap-1">
+      <div className="modal-padding flex-col edit-user-modal-container modal-primary-color gap-1">
         <div className="flex-row align-center-flex justify-space-between-flex">
           <h2>Edit profile</h2>
           <i
@@ -49,9 +49,10 @@ const UserProfileEditModal = ({ setUserProfileModal }) => {
               </div>
             </div>
             <div className="flex-col gap-z-5">
-              <div className="edit-profile-modal-input-container flex-col">
+              <div className="edit-profile-modal-input-container flex-col gap-z-5">
                 <span>Name</span>
                 <input
+                  className="user-profile-input"
                   type="text"
                   name="fullName"
                   placeholder="Enter your full-name"
@@ -59,9 +60,10 @@ const UserProfileEditModal = ({ setUserProfileModal }) => {
                   value={editInput.fullName}
                 />
               </div>
-              <div className="edit-profile-modal-input-container flex-col">
+              <div className="edit-profile-modal-input-container flex-col gap-z-5">
                 <span>Bio</span>
                 <input
+                  className="user-profile-input"
                   type="text"
                   name="bio"
                   placeholder="Enter your bio"
@@ -69,9 +71,10 @@ const UserProfileEditModal = ({ setUserProfileModal }) => {
                   value={editInput.bio}
                 />
               </div>
-              <div className="edit-profile-modal-input-container flex-col">
+              <div className="edit-profile-modal-input-container flex-col gap-z-5">
                 <span>Website</span>
                 <input
+                  className="user-profile-input"
                   type="text"
                   name="website"
                   placeholder="Enter your url"
