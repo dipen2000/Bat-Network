@@ -10,12 +10,14 @@ import {
 } from "../../services/userService";
 
 const updateFollowingUser = (users, followingUser) => {
+  console.log(followingUser);
   return [...users].map((user) =>
     user._id === followingUser._id ? followingUser : user
   );
 };
 
 const updateFollowedUser = (users, followedUser) => {
+  console.log(followedUser);
   return [...users].map((user) =>
     user._id === followedUser._id ? followedUser : user
   );
@@ -83,7 +85,7 @@ export const removeBookMark = createAsyncThunk(
   async ({ token, postId }) => {
     try {
       const { data, status } = await removeBookMarkService(token, postId);
-      console.log(data);
+      // console.log(data);
       if (status === 200) {
         return data.bookmarks;
       }
@@ -114,7 +116,7 @@ export const followUser = createAsyncThunk(
   async ({ token, followUserId }) => {
     try {
       const { data, status } = await followUserService(token, followUserId);
-
+      console.log(data);
       if (status === 200) {
         return data;
       }
