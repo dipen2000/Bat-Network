@@ -7,6 +7,7 @@ import { Avatar } from "../../Components/Avatar/Avatar";
 import { useSelector, useDispatch } from "react-redux";
 import { getAllUsers } from "../../features/user";
 import { PostOptionsModal } from "../../features/post";
+import { getPostDate } from "../../Utils";
 import {
   getSinglePost,
   CommentCard,
@@ -119,7 +120,7 @@ const SinglePage = () => {
                         <strong>{currentUser?.fullName}</strong>
                         <span>@{currentUser?.username}</span>
                         <span>·</span>
-                        <span>10min ago</span>
+                        <span>{getPostDate(currentUser?.createdAt)}</span>
                       </div>
                       <div className="relative">
                         <div

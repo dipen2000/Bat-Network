@@ -7,6 +7,7 @@ import { addBookMark, removeBookMark } from "../../user/userSlice";
 import { dislikePost, likePost } from "../postSlice";
 import { PostOptionsModal } from "./PostOptionsModal";
 import { useState } from "react";
+import { getPostDate } from "../../../Utils";
 
 const PostCard = ({ post }) => {
   const dispatch = useDispatch();
@@ -59,7 +60,7 @@ const PostCard = ({ post }) => {
             <strong>{userOfPost?.fullName}</strong>
             <span>@{userOfPost?.username}</span>
             <span>·</span>
-            <span>10min ago</span>
+            <span>{getPostDate(userOfPost?.createdAt)}</span>
           </div>
           <div className="relative">
             <div

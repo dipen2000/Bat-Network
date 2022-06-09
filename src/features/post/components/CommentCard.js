@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { CommentOptionsModal } from "./CommentOptionsModal";
 import { useState } from "react";
 import { useSelector } from "react-redux";
+import { getPostDate } from "../../../Utils";
 const CommentCard = ({ comment, postId }) => {
   const users = useSelector((state) => state.user.users);
   const currentUser = users?.find(
@@ -40,7 +41,7 @@ const CommentCard = ({ comment, postId }) => {
             <strong>{currentUser?.fullName}</strong>
             <span>@{currentUser?.username}</span>
             <span>·</span>
-            <span>10min ago</span>
+            <span>{getPostDate(currentUser?.createdAt)}</span>
           </div>
           <div className="relative">
             <div
