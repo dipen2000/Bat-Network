@@ -33,7 +33,7 @@ export const posts = [
     },
     username: "first_robin",
     fullName: "Nightwing",
-    createdAt: "2021-05-10",
+    createdAt: "2022-03-03",
     updatedAt: formatDate(),
     comments: [
       {
@@ -44,7 +44,7 @@ export const posts = [
         username: "the_dark_knight",
         profileAvatar:
           "https://www.dccomics.com/sites/default/files/styles/character_thumb_160x160/public/Char_Profile_Batman_20190116_5c3fc4b40faec2.47318964.jpg?itok=u4BHrDeE",
-        createdAt: "2021-05-10",
+        createdAt: "2022-03-03",
         updatedAt: formatDate(),
         votes: {
           upvotedBy: [],
@@ -87,7 +87,7 @@ export const posts = [
     },
     username: "pennyworth",
     fullName: "Alfred",
-    createdAt: "2021-05-03",
+    createdAt: "2022-03-01",
     updatedAt: formatDate(),
     comments: [],
   },

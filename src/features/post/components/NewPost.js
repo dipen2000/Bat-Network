@@ -25,15 +25,15 @@ const NewPost = () => {
   };
 
   return (
-    <div className="new-post-container-grid bord-3-purple">
-      <div className="bord-3-green">
+    <div className="new-post-container-grid">
+      <div className="">
         <Avatar
           avatar={currentUser?.profileAvatar}
           username={currentUser?.username}
           fullName={currentUser?.fullName}
         />
       </div>
-      <div className="bord-3-green">
+      <div className="">
         <form onSubmit={newPostHandler}>
           <div className="flex-col gap-1">
             <textarea

@@ -12,10 +12,10 @@ const UserHandle = () => {
 
   return (
     <div
-      className="bord-3-green flex-row justify-center-flex curs-point"
+      className=" flex-row justify-center-flex curs-point user-handle-container"
       onClick={() => navigate(`/profile/${loggedInUser?.username}`)}
     >
-      <div className="bord-3-red flex-row gap-1 justify-center-flex align-center-flex">
+      <div className=" flex-row gap-1 justify-center-flex align-center-flex">
         <Avatar
           avatar={loggedInUser?.profileAvatar}
           username={loggedInUser?.username}

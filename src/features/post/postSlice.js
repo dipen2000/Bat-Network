@@ -8,6 +8,9 @@ import {
   createPostService,
   deletePostService,
   editPostService,
+  addCommentService,
+  deleteCommentService,
+  editCommentService,
 } from "../../services/postService";
 
 export const getPosts = createAsyncThunk("post/getPosts", async () => {
@@ -126,6 +129,64 @@ export const editPost = createAsyncThunk(
   }
 );
 
+export const addComment = createAsyncThunk(
+  "post/addComment",
+  async ({ token, commentData, postId }) => {
+    try {
+      const { data, status } = await addCommentService(
+        token,
+        commentData,
+        postId
+      );
+
+      if (status === 201) {
+        return data.posts;
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  }
+);
+
+export const deleteComment = createAsyncThunk(
+  "post/deleteComment",
+  async ({ token, commentId, postId }) => {
+    try {
+      const { data, status } = await deleteCommentService(
+        token,
+        commentId,
+        postId
+      );
+
+      if (status === 201) {
+        return data.posts;
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  }
+);
+
+export const editComment = createAsyncThunk(
+  "post/editComment",
+  async ({ token, commentData, postId, commentId }) => {
+    try {
+      const { data, status } = await editCommentService(
+        token,
+        commentData,
+        postId,
+        commentId
+      );
+
+      if (status === 201) {
+        return data.posts;
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  }
+);
+
 const postSlice = createSlice({
   name: "post",
   initialState: {
@@ -140,6 +201,9 @@ const postSlice = createSlice({
   reducers: {
     resetPostsOfUser: (state) => {
       state.postsOfUser = [];
+    },
+    setActiveSort: (state, { payload }) => {
+      state.activeSort = payload;
     },
   },
 
@@ -180,9 +244,18 @@ const postSlice = createSlice({
     [editPost.fulfilled]: (state, { payload }) => {
       state.posts = payload;
     },
+    [addComment.fulfilled]: (state, { payload }) => {
+      state.posts = payload;
+    },
+    [deleteComment.fulfilled]: (state, { payload }) => {
+      state.posts = payload;
+    },
+    [editComment.fulfilled]: (state, { payload }) => {
+      state.posts = payload;
+    },
   },
 });
 
-export const { resetPostsOfUser } = postSlice.actions;
+export const { resetPostsOfUser, setActiveSort } = postSlice.actions;
 
 export default postSlice.reducer;

@@ -7,11 +7,13 @@ import { Avatar } from "../../Components/Avatar/Avatar";
 import { useSelector, useDispatch } from "react-redux";
 import { getAllUsers } from "../../features/user";
 import { PostOptionsModal } from "../../features/post";
+import { getPostDate } from "../../Utils";
 import {
   getSinglePost,
   CommentCard,
   likePost,
   dislikePost,
+  addComment,
 } from "../../features/post";
 import { useEffect, useState } from "react";
 import { ButtonPrimary } from "../../Components/Buttons";
@@ -44,17 +46,16 @@ const SinglePage = () => {
     (dbUser) => dbUser.username === user.username
   );
 
-  const [comment, setComment] = useState({ reply: "" });
+  const [comment, setComment] = useState("");
 
   const commentChangeHandler = (e) => {
-    const { name, value } = e.target;
-    setComment((prevState) => ({ ...prevState, [name]: value }));
+    setComment(e.target.value);
   };
 
   useEffect(() => {
-    dispatch(getSinglePost(currentPost._id));
+    dispatch(getSinglePost(currentPost?._id));
     dispatch(getAllUsers());
-  }, [dispatch, posts, currentPost._id]);
+  }, [dispatch, posts, currentPost?._id]);
 
   const [userModal, setUserModal] = useState({
     show: false,
@@ -67,6 +68,14 @@ const SinglePage = () => {
   );
 
   const [postOptionsModal, setPostOptionsModal] = useState(false);
+
+  const newCommentSubmitHandler = (e) => {
+    e.preventDefault();
+    dispatch(
+      addComment({ token, commentData: comment, postId: currentPost?._id })
+    );
+    setComment("");
+  };
 
   return (
     <BatNetworkContainer>
@@ -83,7 +92,7 @@ const SinglePage = () => {
           <div className="bord-3-green">
             {isLoading ? (
               <div>Loading...</div>
-            ) : singlePost ? (
+            ) : currentPost ? (
               <div>
                 <div className="new-post-container-grid bord-3-purple">
                   <div
@@ -111,7 +120,7 @@ const SinglePage = () => {
                         <strong>{currentUser?.fullName}</strong>
                         <span>@{currentUser?.username}</span>
                         <span>·</span>
-                        <span>10min ago</span>
+                        <span>{getPostDate(currentUser?.createdAt)}</span>
                       </div>
                       <div className="relative">
                         <div
@@ -125,14 +134,14 @@ const SinglePage = () => {
                         </div>
                         {postOptionsModal && (
                           <PostOptionsModal
-                            post={singlePost}
+                            post={currentPost}
                             setPostOptionsModal={setPostOptionsModal}
                           />
                         )}
                       </div>
                     </div>
-                    <div className="bord-3-blue">{singlePost?.content}</div>
-                    {singlePost?.likes.likeCount > 0 && (
+                    <div className="bord-3-blue">{currentPost?.content}</div>
+                    {currentPost?.likes.likeCount > 0 && (
                       <div
                         className="underline-hover curs-point"
                         onClick={(e) => {
@@ -141,11 +150,11 @@ const SinglePage = () => {
                             ...prevState,
                             show: true,
                             title: "Liked by",
-                            list: singlePost?.likes.likedBy,
+                            list: currentPost?.likes.likedBy,
                           }));
                         }}
                       >
-                        {singlePost?.likes.likeCount} Likes
+                        {currentPost?.likes.likeCount} Likes
                       </div>
                     )}
                     <div className="flex-row gap-1">
@@ -168,11 +177,11 @@ const SinglePage = () => {
                                 );
                           }}
                         ></i>
-                        <span>{singlePost?.likes.likeCount}</span>
+                        <span>{currentPost?.likes.likeCount}</span>
                       </div>
                       <div className="bord-3-purple flex-row post-card-single-CTA-container align-center-flex">
                         <i className="fa-regular fa-comment curs-point"></i>
-                        <span>{singlePost?.comments?.length}</span>
+                        <span>{currentPost?.comments?.length}</span>
                       </div>
                       <div className="bord-3-purple flex-row post-card-single-CTA-container align-center-flex">
                         <i
@@ -209,7 +218,10 @@ const SinglePage = () => {
                     />
                   </div>
                   <div className="bord-3-purple">
-                    <form className="reply-container bord-3-blue">
+                    <form
+                      className="reply-container bord-3-blue"
+                      onSubmit={newCommentSubmitHandler}
+                    >
                       <div className="flex-row align-center-flex gap-1">
                         <input
                           className="flex-grow-1 reply-input-box"
@@ -217,9 +229,9 @@ const SinglePage = () => {
                           placeholder="Write your reply here."
                           name="reply"
                           onChange={commentChangeHandler}
-                          value={comment.reply}
+                          value={comment}
                         />
-                        <ButtonPrimary disabled={!comment?.reply.trim()}>
+                        <ButtonPrimary disabled={!comment?.trim()}>
                           Reply
                         </ButtonPrimary>
                       </div>
@@ -227,13 +239,13 @@ const SinglePage = () => {
                   </div>
                 </div>
 
-                {singlePost?.comments?.length > 0
-                  ? [...singlePost?.comments]?.reverse().map((comment) => {
+                {currentPost?.comments?.length > 0
+                  ? [...currentPost?.comments]?.reverse().map((comment) => {
                       return (
                         <CommentCard
                           key={comment._id}
                           comment={comment}
-                          postId={singlePost?._id}
+                          postId={currentPost?._id}
                         />
                       );
                     })

@@ -15,8 +15,6 @@ const RightSidebar = () => {
     }
   }
 
-  console.log(userList);
-
   return (
     <div className="right-aside-section bord-3-green">
       <div className="fixed-right-aside-section bord-3-blue">

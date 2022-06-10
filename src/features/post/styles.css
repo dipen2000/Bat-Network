@@ -3,15 +3,20 @@
     padding : 0.8rem;
     grid-template-columns: 5rem 1fr;
     gap : 0.5rem;
+    background-color: var(--post-color);
 }
 
 .post-text-area{
     height : 5.5rem;
     width : 100%;
-    border: 3px solid black;
+    /* border: 3px solid black; */
     outline : none;
     resize : none;
-    font-family: var(--component-heading-font);;
+    font-family: var(--component-heading-font);
+    padding : 0.5rem;
+    font-size: 1.6rem;
+    border-radius: 1rem;
+    
 }
 
 .user-username-for-post-details{

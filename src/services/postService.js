@@ -65,6 +65,32 @@ const editPostService = async (input, token, postId) => {
   );
 };
 
+const addCommentService = async (token, commentData, postId) => {
+  return await axios.post(
+    `/api/comments/add/${postId}`,
+    { commentData },
+    {
+      headers: { authorization: token },
+    }
+  );
+};
+
+const deleteCommentService = async (token, commentId, postId) => {
+  return await axios.delete(`/api/comments/delete/${postId}/${commentId}`, {
+    headers: { authorization: token },
+  });
+};
+
+const editCommentService = async (token, commentData, postId, commentId) => {
+  return await axios.post(
+    `/api/comments/edit/${postId}/${commentId}`,
+    { commentData },
+    {
+      headers: { authorization: token },
+    }
+  );
+};
+
 export {
   getPostsService,
   getSinglePostService,
@@ -74,4 +100,7 @@ export {
   createPostService,
   deletePostService,
   editPostService,
+  addCommentService,
+  deleteCommentService,
+  editCommentService,
 };
