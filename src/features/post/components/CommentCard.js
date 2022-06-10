@@ -1,6 +1,8 @@
 import "../styles.css";
 import { Avatar } from "../../../Components/Avatar/Avatar";
 import { useNavigate } from "react-router-dom";
+import { PostOptionsModal } from "./PostOptionsModal";
+import { useState } from "react";
 import { useSelector } from "react-redux";
 const CommentCard = ({ comment, postId }) => {
   const users = useSelector((state) => state.user.users);
@@ -8,6 +10,8 @@ const CommentCard = ({ comment, postId }) => {
     (dbUser) => dbUser.username === comment.username
   );
   const navigate = useNavigate();
+
+  const [postOptionsModal, setPostOptionsModal] = useState(false);
 
   return (
     <div className="new-post-container-grid bord-3-purple">
@@ -38,7 +42,23 @@ const CommentCard = ({ comment, postId }) => {
             <span>·</span>
             <span>10min ago</span>
           </div>
-          <i className="fa-solid fa-ellipsis-vertical curs-point"></i>
+          <div className="relative">
+            <div
+              className="bord-3-red options-icon-container curs-point"
+              onClick={(e) => {
+                e.stopPropagation();
+                setPostOptionsModal((prevState) => !prevState);
+              }}
+            >
+              <i className="fa-solid fa-ellipsis-vertical curs-point"></i>
+            </div>
+            {postOptionsModal && (
+              <PostOptionsModal
+                post={comment}
+                setPostOptionsModal={setPostOptionsModal}
+              />
+            )}
+          </div>
         </div>
         <div className="bord-3-red">{comment.comment}</div>
       </div>

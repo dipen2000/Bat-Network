@@ -8,3 +8,8 @@
     width : 28rem;
     padding : 0.8rem;
 }
+
+.search-bar-input{
+    padding : 0.8rem;
+    font-family: var(--component-heading-font);
+}

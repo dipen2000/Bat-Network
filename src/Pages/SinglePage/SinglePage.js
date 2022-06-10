@@ -6,7 +6,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { Avatar } from "../../Components/Avatar/Avatar";
 import { useSelector, useDispatch } from "react-redux";
 import { getAllUsers } from "../../features/user";
-
+import { PostOptionsModal } from "../../features/post";
 import {
   getSinglePost,
   CommentCard,
@@ -66,6 +66,8 @@ const SinglePage = () => {
     (likeUser) => likeUser.username === user.username
   );
 
+  const [postOptionsModal, setPostOptionsModal] = useState(false);
+
   return (
     <BatNetworkContainer>
       <div className="home-grid-container bord-3-purple">
@@ -111,7 +113,23 @@ const SinglePage = () => {
                         <span>·</span>
                         <span>10min ago</span>
                       </div>
-                      <i className="fa-solid fa-ellipsis-vertical curs-point"></i>
+                      <div className="relative">
+                        <div
+                          className="bord-3-red options-icon-container curs-point"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setPostOptionsModal((prevState) => !prevState);
+                          }}
+                        >
+                          <i className="fa-solid fa-ellipsis-vertical curs-point"></i>
+                        </div>
+                        {postOptionsModal && (
+                          <PostOptionsModal
+                            post={singlePost}
+                            setPostOptionsModal={setPostOptionsModal}
+                          />
+                        )}
+                      </div>
                     </div>
                     <div className="bord-3-blue">{singlePost?.content}</div>
                     {singlePost?.likes.likeCount > 0 && (
