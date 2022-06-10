@@ -9,7 +9,11 @@ import { getAllUsers } from "../../features/user";
 import { getSinglePost, CommentCard } from "../../features/post";
 import { useEffect, useState } from "react";
 import { ButtonPrimary } from "../../Components/Buttons";
-import { UserListModal } from "../../features/user";
+import {
+  UserListModal,
+  addBookMark,
+  removeBookMark,
+} from "../../features/user";
 
 const SinglePage = () => {
   const dispatch = useDispatch();
@@ -17,8 +21,14 @@ const SinglePage = () => {
   const { postId } = useParams();
   const { singlePost, posts, isLoading } = useSelector((state) => state.post);
   const { users } = useSelector((state) => state.user);
+  const token = useSelector((state) => state.auth.token);
+  const bookmarks = useSelector((state) => state.user.bookmarks);
   const user = useSelector((state) => state.auth.user);
-  const currentPost = posts?.find((post) => post.id === postId);
+  const currentPost = posts?.find((post) => post?.id === postId);
+
+  const isPostInBookMarks = bookmarks?.find(
+    (bookmark) => bookmark?._id === currentPost?._id
+  );
 
   const currentUser = users?.find(
     (dbUser) => dbUser.username === singlePost?.username
@@ -111,16 +121,36 @@ const SinglePage = () => {
                       </div>
                     )}
                     <div className="flex-row gap-1">
-                      <div className="bord-3-purple flex-row post-card-single-CTA-container">
-                        <button>Like</button>
+                      <div className="bord-3-purple flex-row post-card-single-CTA-container align-center-flex">
+                        <i className="fa-regular fa-heart curs-point"></i>
                         <span>{singlePost?.likes.likeCount}</span>
                       </div>
-                      <div className="bord-3-purple flex-row post-card-single-CTA-container">
-                        <button>Comment</button>
+                      <div className="bord-3-purple flex-row post-card-single-CTA-container align-center-flex">
+                        <i className="fa-regular fa-comment curs-point"></i>
                         <span>{singlePost?.comments.length}</span>
                       </div>
-                      <div className="bord-3-purple flex-row post-card-single-CTA-container">
-                        <button>Bookmark</button>
+                      <div className="bord-3-purple flex-row post-card-single-CTA-container align-center-flex">
+                        <i
+                          className={`${
+                            isPostInBookMarks ? "fa-solid" : "fa-regular"
+                          } fa-bookmark curs-point`}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            isPostInBookMarks
+                              ? dispatch(
+                                  removeBookMark({
+                                    token,
+                                    postId: currentPost?._id,
+                                  })
+                                )
+                              : dispatch(
+                                  addBookMark({
+                                    token,
+                                    postId: currentPost?._id,
+                                  })
+                                );
+                          }}
+                        ></i>
                       </div>
                     </div>
                   </div>
