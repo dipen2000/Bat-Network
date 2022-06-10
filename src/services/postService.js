@@ -32,10 +32,46 @@ const dislikePostService = async (token, postId) => {
   );
 };
 
+const createPostService = async (input, token, user) => {
+  return await axios.post(
+    "/api/posts",
+    {
+      postData: {
+        content: input,
+        fullName: user.fullName,
+      },
+    },
+    {
+      headers: { authorization: token },
+    }
+  );
+};
+
+const deletePostService = async (token, postId) => {
+  return await axios.delete(`/api/posts/${postId}`, {
+    headers: { authorization: token },
+  });
+};
+
+const editPostService = async (input, token, postId) => {
+  return await axios.post(
+    `/api/posts/edit/${postId}`,
+    {
+      postData: { content: input },
+    },
+    {
+      headers: { authorization: token },
+    }
+  );
+};
+
 export {
   getPostsService,
   getSinglePostService,
   getPostsOfUserService,
   likePostService,
   dislikePostService,
+  createPostService,
+  deletePostService,
+  editPostService,
 };

@@ -154,7 +154,7 @@ const SinglePage = () => {
                       </div>
                       <div className="bord-3-purple flex-row post-card-single-CTA-container align-center-flex">
                         <i className="fa-regular fa-comment curs-point"></i>
-                        <span>{singlePost?.comments.length}</span>
+                        <span>{singlePost?.comments?.length}</span>
                       </div>
                       <div className="bord-3-purple flex-row post-card-single-CTA-container align-center-flex">
                         <i
@@ -209,16 +209,17 @@ const SinglePage = () => {
                   </div>
                 </div>
 
-                {singlePost?.comments.length > 0 &&
-                  [...singlePost?.comments]?.reverse().map((comment) => {
-                    return (
-                      <CommentCard
-                        key={comment._id}
-                        comment={comment}
-                        postId={singlePost?._id}
-                      />
-                    );
-                  })}
+                {singlePost?.comments?.length > 0
+                  ? [...singlePost?.comments]?.reverse().map((comment) => {
+                      return (
+                        <CommentCard
+                          key={comment._id}
+                          comment={comment}
+                          postId={singlePost?._id}
+                        />
+                      );
+                    })
+                  : null}
               </div>
             ) : (
               <p>Post not found</p>

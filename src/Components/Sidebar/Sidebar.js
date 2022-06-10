@@ -1,10 +1,13 @@
 import "./Sidebar.css";
 import { NavLink, useNavigate } from "react-router-dom";
 import { UserHandle } from "../UserHandle/UserHandle";
+import { NewPostModal } from "../../features/post";
+import { useState } from "react";
 const Sidebar = () => {
   const activeStyle = {
     borderBottom: "2px solid black",
   };
+  const [newPostModal, setNewPostModal] = useState(false);
 
   const navigate = useNavigate();
 
@@ -46,11 +49,23 @@ const Sidebar = () => {
             </ul>
           </div>
           <div className="flex-row align-center-flex justify-center-flex">
-            <button className="curs-point">+ new post</button>
+            <button
+              className="curs-point"
+              onClick={(e) => {
+                e.stopPropagation();
+                setNewPostModal(true);
+              }}
+            >
+              <div className="flex-row gap-z-5 align-center-flex">
+                <i className="fa-solid fa-plus"></i>
+                <span>New post</span>
+              </div>
+            </button>
           </div>
         </div>
         <UserHandle />
       </div>
+      {newPostModal && <NewPostModal setNewPostModal={setNewPostModal} />}
     </div>
   );
 };

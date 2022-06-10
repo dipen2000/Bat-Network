@@ -5,6 +5,8 @@ export {
   addBookMark,
   getBookMarks,
   removeBookMark,
+  unfollowUser,
+  followUser,
 } from "./userSlice";
 export { UserListModal } from "./components/UserListModal";
 export { UserProfileEditModal } from "./components/UserProfileEditModal";

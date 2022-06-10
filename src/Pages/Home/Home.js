@@ -4,7 +4,7 @@ import { Sidebar } from "../../Components/Sidebar/Sidebar";
 import { RightSidebar } from "../../Components/RightSidebar/RightSidebar";
 import { SortBar } from "../../Components/SortBar/SortBar";
 import { PostCard } from "../../features/post";
-import { NewPost } from "../../features/post/components/NewPost";
+import { NewPost } from "../../features/post";
 import { useEffect } from "react";
 import { getPosts } from "../../features/post";
 import { getAllUsers } from "../../features/user";

@@ -5,6 +5,9 @@ import {
   getPostsOfUserService,
   likePostService,
   dislikePostService,
+  createPostService,
+  deletePostService,
+  editPostService,
 } from "../../services/postService";
 
 export const getPosts = createAsyncThunk("post/getPosts", async () => {
@@ -78,6 +81,51 @@ export const dislikePost = createAsyncThunk(
   }
 );
 
+export const createPost = createAsyncThunk(
+  "post/createPost",
+  async ({ input, token, user }) => {
+    try {
+      const { data, status } = await createPostService(input, token, user);
+      console.log(data.posts);
+      if (status === 201) {
+        return data.posts;
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  }
+);
+
+export const deletePost = createAsyncThunk(
+  "post/deletePost",
+  async ({ token, postId }) => {
+    try {
+      const { data, status } = await deletePostService(token, postId);
+
+      if (status === 201) {
+        return data.posts;
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  }
+);
+
+export const editPost = createAsyncThunk(
+  "post/editPost",
+  async ({ input, token, postId }) => {
+    try {
+      const { data, status } = await editPostService(input, token, postId);
+
+      if (status === 201) {
+        return data.posts;
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  }
+);
+
 const postSlice = createSlice({
   name: "post",
   initialState: {
@@ -121,6 +169,15 @@ const postSlice = createSlice({
       state.posts = payload;
     },
     [dislikePost.fulfilled]: (state, { payload }) => {
+      state.posts = payload;
+    },
+    [createPost.fulfilled]: (state, { payload }) => {
+      state.posts = payload;
+    },
+    [deletePost.fulfilled]: (state, { payload }) => {
+      state.posts = payload;
+    },
+    [editPost.fulfilled]: (state, { payload }) => {
       state.posts = payload;
     },
   },
