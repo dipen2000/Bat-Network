@@ -12,4 +12,30 @@ const getPostsOfUserService = async (username) => {
   return await axios.get(`/api/posts/user/${username}`);
 };
 
-export { getPostsService, getSinglePostService, getPostsOfUserService };
+const likePostService = async (token, postId) => {
+  return await axios.post(
+    `/api/posts/like/${postId}`,
+    {},
+    {
+      headers: { authorization: token },
+    }
+  );
+};
+
+const dislikePostService = async (token, postId) => {
+  return await axios.post(
+    `/api/posts/dislike/${postId}`,
+    {},
+    {
+      headers: { authorization: token },
+    }
+  );
+};
+
+export {
+  getPostsService,
+  getSinglePostService,
+  getPostsOfUserService,
+  likePostService,
+  dislikePostService,
+};
