@@ -3,7 +3,7 @@ import { Avatar } from "../Avatar/Avatar";
 
 const SearchModal = ({ userList }) => {
   return (
-    <div className="search-modal-container absolute">
+    <div className="search-modal-container absolute modal-primary-color">
       {userList.length > 0 ? (
         <div>
           <div className="flex-col">
@@ -11,7 +11,7 @@ const SearchModal = ({ userList }) => {
               return (
                 <div
                   key={index}
-                  className="bord-3-red flex-row gap-1 align-center-flex single-search-result"
+                  className=" flex-row gap-1 align-center-flex single-search-result"
                 >
                   <Avatar
                     avatar={user?.profileAvatar}

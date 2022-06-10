@@ -16,10 +16,10 @@ const RightSidebar = () => {
   }
 
   return (
-    <div className="right-aside-section bord-3-green">
-      <div className="fixed-right-aside-section bord-3-blue">
-        <div className="flex-col bord-3-red gap-2">
-          <div className="bord-3-yellow flex-row relative">
+    <div className="right-aside-section">
+      <div className="fixed-right-aside-section">
+        <div className="flex-col  gap-2">
+          <div className="flex-row relative">
             <input
               className="flex-grow-1 search-bar-input"
               type="text"

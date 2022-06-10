@@ -19,11 +19,11 @@ const Explore = () => {
 
   return (
     <BatNetworkContainer>
-      <div className="home-grid-container bord-3-purple">
+      <div className="home-grid-container">
         <Sidebar />
-        <div className="bord-3-red">
+        <div className="">
           <div className="flex-col">
-            <div className="page-title bord-3-black">Explore</div>
+            <h2 className="page-title">Explore</h2>
             {isLoading ? (
               <div>Loading...</div>
             ) : posts.length ? (

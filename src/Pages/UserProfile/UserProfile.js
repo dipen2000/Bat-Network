@@ -58,12 +58,12 @@ const UserProfile = () => {
 
   return (
     <BatNetworkContainer>
-      <div className="home-grid-container bord-3-purple">
+      <div className="home-grid-container">
         <Sidebar />
-        <div className="flex-col bord-3-green">
+        <div className="flex-col ">
           {currentUser ? (
             <div>
-              <div className="flex-row bord-3-red align-center-flex gap-1 profile-navigation">
+              <div className="flex-row  align-center-flex gap-1 profile-navigation">
                 <i
                   className="fa-solid fa-arrow-left curs-point"
                   onClick={() => navigate(-1)}
@@ -75,7 +75,7 @@ const UserProfile = () => {
               </div>
               <div className="user-profile-grid">
                 <div>
-                  <div className="bord-3-green user-profile-img-container">
+                  <div className=" user-profile-img-container">
                     <img
                       className="img-resp avatar-img"
                       src={currentUser?.profileAvatar}
@@ -83,9 +83,9 @@ const UserProfile = () => {
                     />
                   </div>
                 </div>
-                <div className="bord-3-purple">
-                  <div className="flex-col bord-3-green gap-1">
-                    <div className="flex-row justify-space-between-flex bord-3-purple">
+                <div className="">
+                  <div className="flex-col  gap-1">
+                    <div className="flex-row justify-space-between-flex ">
                       <div className="flex-col big-fonts-user-profile-line-height">
                         <h2>{currentUser?.fullName}</h2>
                         <span>@{currentUser?.username}</span>
@@ -116,13 +116,13 @@ const UserProfile = () => {
                         )}
                       </div>
                     </div>
-                    <div className="bord-3-green flex-col">
+                    <div className=" flex-col">
                       {currentUser?.bio.trim() && <p>{currentUser?.bio}</p>}
                       {currentUser?.website.trim() && (
-                        <div className="flex-row align-center-flex gap-z-5">
-                          <i className="fa-solid fa-link"></i>
+                        <div className="flex-row align-center-flex gap-z-5 web-link">
+                          <i className="fa-solid fa-link "></i>
                           <a
-                            className="curs-point web-link underline-hover"
+                            className="curs-point  underline-hover"
                             href={currentUser?.website}
                             target="_blank"
                           >
@@ -172,7 +172,7 @@ const UserProfile = () => {
           {isLoading ? (
             <div>Loading...</div>
           ) : (
-            <div className="flex-col bord-3-purple">
+            <div className="flex-col">
               {postsOfUser?.length > 0 ? (
                 [...postsOfUser]?.reverse().map((post) => {
                   return <PostCard key={post._id} post={post} />;

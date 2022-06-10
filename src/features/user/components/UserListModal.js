@@ -9,7 +9,7 @@ const UserListModal = ({ userModal, setUserModal }) => {
   };
   return (
     <div className="modal-section-overlay flex-col justify-center-flex align-center-flex">
-      <div className="follow-modal-container bord-3-red flex-col">
+      <div className="follow-modal-container modal-primary-color flex-col">
         {list.length > 0 ? (
           <div className="flex-col gap-1">
             <div className="flex-row align-center-flex justify-space-between-flex">
@@ -23,7 +23,7 @@ const UserListModal = ({ userModal, setUserModal }) => {
               {list.map((item) => {
                 return (
                   <div className="flex-row gap-z-5" key={item?._id}>
-                    <div className="bord-3-red flex-row gap-1 justify-center-flex align-center-flex">
+                    <div className=" flex-row gap-1 justify-center-flex align-center-flex">
                       <Avatar
                         avatar={item?.profileAvatar}
                         username={item?.username}

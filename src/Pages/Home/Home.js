@@ -34,9 +34,9 @@ const Home = () => {
 
   return (
     <BatNetworkContainer>
-      <div className="home-grid-container bord-3-purple">
+      <div className="home-grid-container">
         <Sidebar />
-        <div className="bord-3-red">
+        <div className="">
           <div className="flex-col">
             <h3 className="page-title">Home</h3>
             <NewPost />

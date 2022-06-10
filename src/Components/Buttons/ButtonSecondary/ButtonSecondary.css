@@ -1,3 +1,18 @@
 .button-secondary{
-    border : 3px solid black;
+    border : 3px solid var(--btn-color);
+    font-family: var(--component-heading-font);
+    /* padding :  */
+    padding : 0.8rem 1.5rem;
+    border-radius: 3rem;
+    outline : none;
+    font-size: 1.5rem;
+    background-color : var(--primary-color);
+    color : ghostwhite;
 }
+
+.button-secondary:hover{
+    background-color : #141213e6;
+}
+
+
+

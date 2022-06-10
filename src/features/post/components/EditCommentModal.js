@@ -44,9 +44,9 @@ const EditCommentModal = ({
         e.stopPropagation();
       }}
     >
-      <div className="new-post-container-grid bord-3-purple curs-point new-post-container">
-        <div className="bord-3-green">
-          <div className="bord-3-green">
+      <div className="new-post-container-grid curs-point modal-primary-color new-post-container">
+        <div className="">
+          <div className="">
             <Avatar
               avatar={currentUser?.profileAvatar}
               username={currentUser?.username}
@@ -54,7 +54,7 @@ const EditCommentModal = ({
             />
           </div>
         </div>
-        <div className="bord-3-green">
+        <div className="">
           <form onSubmit={editCommentModalSubmitHandler}>
             <div className="flex-col gap-1">
               <textarea
