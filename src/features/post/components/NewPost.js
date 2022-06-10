@@ -13,8 +13,6 @@ const NewPost = () => {
     setInput((prevState) => ({ ...prevState, [name]: value }));
   };
 
-  console.log(input.text);
-
   return (
     <div className="new-post-container-grid bord-3-purple">
       <div className="bord-3-green">

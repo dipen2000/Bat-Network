@@ -8,4 +8,8 @@ const getSinglePostService = async (postId) => {
   return await axios.get(`/api/posts/${postId}`);
 };
 
-export { getPostsService, getSinglePostService };
+const getPostsOfUserService = async (username) => {
+  return await axios.get(`/api/posts/user/${username}`);
+};
+
+export { getPostsService, getSinglePostService, getPostsOfUserService };

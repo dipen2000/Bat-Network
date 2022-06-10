@@ -1,5 +1,8 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { getAllUsersService } from "../../services/userService";
+import {
+  getAllUsersService,
+  updateProfileService,
+} from "../../services/userService";
 
 export const getAllUsers = createAsyncThunk("user/getAllUsers", async () => {
   try {
@@ -12,6 +15,21 @@ export const getAllUsers = createAsyncThunk("user/getAllUsers", async () => {
     console.log(e);
   }
 });
+
+export const updateProfile = createAsyncThunk(
+  "user/updateProfile",
+  async ({ editInput, token }) => {
+    try {
+      const { data, status } = await updateProfileService(editInput, token);
+
+      if (status === 201) {
+        return data.user;
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  }
+);
 
 const userSlice = createSlice({
   name: "user",
@@ -31,6 +49,12 @@ const userSlice = createSlice({
     [getAllUsers.fulfilled]: (state, { payload }) => {
       state.isLoading = false;
       state.users = payload;
+    },
+    [updateProfile.fulfilled]: (state, { payload }) => {
+      state.users = state.users.map((user) => {
+        return user.username === payload.username ? payload : user;
+      });
+      state.isLoading = false;
     },
   },
 });

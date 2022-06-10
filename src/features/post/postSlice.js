@@ -1,6 +1,9 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { getPostsService } from "../../services/postService";
-import { getSinglePostService } from "../../services/postService";
+import {
+  getPostsService,
+  getSinglePostService,
+  getPostsOfUserService,
+} from "../../services/postService";
 
 export const getPosts = createAsyncThunk("post/getPosts", async () => {
   try {
@@ -28,17 +31,37 @@ export const getSinglePost = createAsyncThunk(
   }
 );
 
+export const getPostsOfUser = createAsyncThunk(
+  "post/getPostsOfUser",
+  async (username) => {
+    try {
+      const { data, status } = await getPostsOfUserService(username);
+
+      if (status === 200) {
+        return data.posts;
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  }
+);
+
 const postSlice = createSlice({
   name: "post",
   initialState: {
     isLoading: false,
     posts: [],
     singlePost: null,
+    postsOfUser: [],
     activeSort: "Latest",
     error: "",
   },
 
-  reducers: {},
+  reducers: {
+    resetPostsOfUser: (state) => {
+      state.postsOfUser = [];
+    },
+  },
 
   extraReducers: {
     [getPosts.pending]: (state) => {
@@ -55,7 +78,16 @@ const postSlice = createSlice({
       state.isLoading = false;
       state.singlePost = payload;
     },
+    [getPostsOfUser.pending]: (state) => {
+      state.isLoading = true;
+    },
+    [getPostsOfUser.fulfilled]: (state, { payload }) => {
+      state.isLoading = false;
+      state.postsOfUser = payload;
+    },
   },
 });
+
+export const { resetPostsOfUser } = postSlice.actions;
 
 export default postSlice.reducer;
