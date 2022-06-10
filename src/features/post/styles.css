@@ -1,0 +1,24 @@
+.new-post-container-grid{
+    display : grid;
+    padding : 0.8rem;
+    grid-template-columns: 5rem 1fr;
+    gap : 0.5rem;
+}
+
+.post-text-area{
+    height : 5.5rem;
+    width : 100%;
+    border: 3px solid black;
+    outline : none;
+    resize : none;
+    font-family: var(--component-heading-font);;
+}
+
+.user-username-for-post-details{
+    gap : 0.5rem;
+    font-size: 1.4rem;
+}
+
+.post-card-single-CTA-container{
+    gap : 0.5rem;
+}

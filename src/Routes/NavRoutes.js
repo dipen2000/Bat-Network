@@ -1,6 +1,6 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import { Login, Signup } from "../features/auth";
-import { Home, Explore, Bookmark, SinglePage } from "../Pages";
+import { Home, Explore, Bookmark, SinglePage, Page404 } from "../Pages";
 import { useSelector } from "react-redux";
 import { PrivateRoutes } from "./PrivateRoutes";
 
@@ -12,7 +12,8 @@ const NavRoutes = () => {
         <Route path="/" element={<Home />} />
         <Route path="/explore" element={<Explore />} />
         <Route path="/bookmark" element={<Bookmark />} />
-        <Route path="/single" element={<SinglePage />} />
+        <Route path="/post/:postId" element={<SinglePage />} />
+        <Route path="*" element={<Page404 />} />
       </Route>
 
       {!token ? (
