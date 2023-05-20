@@ -14,7 +14,7 @@ export const users = [
     bio: "The silent guardian , The watchful protector and The Dark Knight of GOTHAM.",
     website: "https://bit.ly/3GWXnco",
     profileAvatar:
-      "https://www.dccomics.com/sites/default/files/styles/character_thumb_160x160/public/Char_Profile_Batman_20190116_5c3fc4b40faec2.47318964.jpg?itok=u4BHrDeE",
+      "https://static.dc.com/dc/files/default_images/Char_Profile_Batman_20190116_5c3fc4b40faec2.47318964.jpg",
     createdAt: formatDate(),
     updatedAt: formatDate(),
     following: [
@@ -23,14 +23,14 @@ export const users = [
         fullName: "Nightwing",
         username: "first_robin",
         profileAvatar:
-          "https://www.dccomics.com/sites/default/files/styles/character_thumb_160x160/public/Char_Profile_Nightwing_2_5c50fa38094336.37015575.jpg?itok=elLGTA2E",
+          "https://static.dc.com/dc/files/default_images/Char_Profile_Nightwing_2_5c50fa38094336.37015575.jpg",
       },
       {
         _id: uuid(),
         fullName: "Alfred",
         username: "pennyworth",
         profileAvatar:
-          "https://www.dccomics.com/sites/default/files/styles/character_thumb_160x160/public/Char_Profile_AlfredPennyworth_5c40ddc7b0e412.20200112.jpg?itok=tVwKTrvd",
+          "https://static.dc.com/dc/files/default_images/Char_Profile_AlfredPennyworth_5c40ddc7b0e412.20200112.jpg",
       },
     ],
     followers: [
@@ -39,21 +39,21 @@ export const users = [
         fullName: "Catwoman",
         username: "the_cat",
         profileAvatar:
-          "https://www.dccomics.com/sites/default/files/styles/character_thumb_160x160/public/Char_Profile_Catwoman_5c47c984ed1d66.81377433.jpg?itok=yHAKRa64",
+          "https://static.dc.com/dc/files/default_images/Char_Profile_Catwoman_5c47c984ed1d66.81377433.jpg",
       },
       {
         _id: uuid(),
         fullName: "Nightwing",
         username: "first_robin",
         profileAvatar:
-          "https://www.dccomics.com/sites/default/files/styles/character_thumb_160x160/public/Char_Profile_Nightwing_2_5c50fa38094336.37015575.jpg?itok=elLGTA2E",
+          "https://static.dc.com/dc/files/default_images/Char_Profile_Nightwing_2_5c50fa38094336.37015575.jpg",
       },
       {
         _id: uuid(),
         fullName: "Alfred",
         username: "pennyworth",
         profileAvatar:
-          "https://www.dccomics.com/sites/default/files/styles/character_thumb_160x160/public/Char_Profile_AlfredPennyworth_5c40ddc7b0e412.20200112.jpg?itok=tVwKTrvd",
+          "https://static.dc.com/dc/files/default_images/Char_Profile_AlfredPennyworth_5c40ddc7b0e412.20200112.jpg",
       },
     ],
   },
@@ -65,7 +65,7 @@ export const users = [
     bio: "The first Robin and the protector of Bludhaven.",
     website: "https://bit.ly/3NVkGph",
     profileAvatar:
-      "https://www.dccomics.com/sites/default/files/styles/character_thumb_160x160/public/Char_Profile_Nightwing_2_5c50fa38094336.37015575.jpg?itok=elLGTA2E",
+      "https://static.dc.com/dc/files/default_images/Char_Profile_Nightwing_2_5c50fa38094336.37015575.jpg",
     createdAt: formatDate(),
     updatedAt: formatDate(),
     following: [
@@ -74,14 +74,14 @@ export const users = [
         fullName: "BATMAN",
         username: "the_dark_knight",
         profileAvatar:
-          "https://www.dccomics.com/sites/default/files/styles/character_thumb_160x160/public/Char_Profile_Batman_20190116_5c3fc4b40faec2.47318964.jpg?itok=u4BHrDeE",
+          "https://static.dc.com/dc/files/default_images/Char_Profile_Batman_20190116_5c3fc4b40faec2.47318964.jpg",
       },
       {
         _id: uuid(),
         fullName: "Alfred",
         username: "pennyworth",
         profileAvatar:
-          "https://www.dccomics.com/sites/default/files/styles/character_thumb_160x160/public/Char_Profile_AlfredPennyworth_5c40ddc7b0e412.20200112.jpg?itok=tVwKTrvd",
+          "https://static.dc.com/dc/files/default_images/Char_Profile_AlfredPennyworth_5c40ddc7b0e412.20200112.jpg",
       },
     ],
     followers: [
@@ -90,7 +90,7 @@ export const users = [
         fullName: "BATMAN",
         username: "the_dark_knight",
         profileAvatar:
-          "https://www.dccomics.com/sites/default/files/styles/character_thumb_160x160/public/Char_Profile_Batman_20190116_5c3fc4b40faec2.47318964.jpg?itok=u4BHrDeE",
+          "https://static.dc.com/dc/files/default_images/Char_Profile_Batman_20190116_5c3fc4b40faec2.47318964.jpg",
       },
     ],
   },
@@ -102,7 +102,7 @@ export const users = [
     bio: "The Wayne family butler.",
     website: "https://bit.ly/3O11eY3",
     profileAvatar:
-      "https://www.dccomics.com/sites/default/files/styles/character_thumb_160x160/public/Char_Profile_AlfredPennyworth_5c40ddc7b0e412.20200112.jpg?itok=tVwKTrvd",
+      "https://static.dc.com/dc/files/default_images/Char_Profile_AlfredPennyworth_5c40ddc7b0e412.20200112.jpg",
     createdAt: formatDate(),
     updatedAt: formatDate(),
     following: [
@@ -111,14 +111,14 @@ export const users = [
         fullName: "BATMAN",
         username: "the_dark_knight",
         profileAvatar:
-          "https://www.dccomics.com/sites/default/files/styles/character_thumb_160x160/public/Char_Profile_Batman_20190116_5c3fc4b40faec2.47318964.jpg?itok=u4BHrDeE",
+          "https://static.dc.com/dc/files/default_images/Char_Profile_Batman_20190116_5c3fc4b40faec2.47318964.jpg",
       },
       {
         _id: uuid(),
         fullName: "Nightwing",
         username: "first_robin",
         profileAvatar:
-          "https://www.dccomics.com/sites/default/files/styles/character_thumb_160x160/public/Char_Profile_Nightwing_2_5c50fa38094336.37015575.jpg?itok=elLGTA2E",
+          "https://static.dc.com/dc/files/default_images/Char_Profile_Nightwing_2_5c50fa38094336.37015575.jpg",
       },
     ],
     followers: [
@@ -127,7 +127,7 @@ export const users = [
         fullName: "BATMAN",
         username: "the_dark_knight",
         profileAvatar:
-          "https://www.dccomics.com/sites/default/files/styles/character_thumb_160x160/public/Char_Profile_Batman_20190116_5c3fc4b40faec2.47318964.jpg?itok=u4BHrDeE",
+          "https://static.dc.com/dc/files/default_images/Char_Profile_Batman_20190116_5c3fc4b40faec2.47318964.jpg",
       },
     ],
   },
@@ -139,7 +139,7 @@ export const users = [
     bio: "Cat 💓 Bat",
     website: "https://bit.ly/3ztf9SG",
     profileAvatar:
-      "https://www.dccomics.com/sites/default/files/styles/character_thumb_160x160/public/Char_Profile_Catwoman_5c47c984ed1d66.81377433.jpg?itok=yHAKRa64",
+      "https://static.dc.com/dc/files/default_images/Char_Profile_Catwoman_5c47c984ed1d66.81377433.jpg",
     createdAt: formatDate(),
     updatedAt: formatDate(),
     following: [
@@ -148,7 +148,7 @@ export const users = [
         fullName: "BATMAN",
         username: "the_dark_knight",
         profileAvatar:
-          "https://www.dccomics.com/sites/default/files/styles/character_thumb_160x160/public/Char_Profile_Batman_20190116_5c3fc4b40faec2.47318964.jpg?itok=u4BHrDeE",
+          "https://static.dc.com/dc/files/default_images/Char_Profile_Batman_20190116_5c3fc4b40faec2.47318964.jpg",
       },
     ],
     followers: [],

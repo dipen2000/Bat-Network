@@ -18,6 +18,7 @@ const PostCard = ({ post }) => {
   const navigate = useNavigate();
   const { content, fullName, username, likes, comments, id } = post;
   const userOfPost = users?.find((user) => user.username === username);
+  console.log(userOfPost?.profileAvatar);
   const currentPost = posts?.find((dbPost) => dbPost._id === post._id);
 
   const isPostInBookmarks = bookmarks?.find(
